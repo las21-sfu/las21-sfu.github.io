@@ -145,7 +145,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 32px;
     padding: 32px;
-    justify-items: center; 
+    justify-items: stretch;
   }
   
   
@@ -167,6 +167,19 @@
     margin: 0 auto;  
 }
   
+@media (max-width: 425px) {
+    .section {
+      padding: 24px 16px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .section {
+      padding: 16px 12px;
+    }
+  }
+  
+
 .section.blue {
     background-color: #ffffff;
     align-items: center;
@@ -178,13 +191,14 @@
   }
   
   /* CARDS */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    max-width: 500px;
-    
-  }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+}
+
   
   .card {
     background: white;
