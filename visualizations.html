@@ -1,28 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAT 355 Website</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Visualizations</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="logo">MySite</div>
-    
-        <!-- Mobile menu toggle -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-    
-        <nav class="nav">
-          <a href="index.html">Home</a>
-          <a href="visualizations.html">Visualizations</a>
-        </nav>
-      </header>
-    <h1>Visualizations</h1>
+
+<header class="header">
+  <div class="logo">
+    <a href="index.html"><strong>LS</strong></a></div>  
+  <nav>
+    <a href="visualizations.html">Visualizations</a>
+  </nav>
+</header>
+
+<h1>Visualizations</h1>
+<p>note: size refers to happiness of indivisual after walk</p>
+<div class="viz-wrapper">
+<div id="visualizations-container">
+  <svg
+    id="bubbleChart"
+    width="600"
+    height="500"
+    viewBox="0 0 600 400"
+  >
+    <!-- X axis -->
+    <line x1="50" y1="350" x2="550" y2="350" stroke="black" />
+    <text x="300" y="390" font-size="12" text-anchor="middle">
+      Time walked per day (minutes)
+    </text>
+
+    <!-- Y axis -->
+    <line x1="50" y1="50" x2="50" y2="350" stroke="black" />
+    <text
+      x="15"
+      y="200"
+      font-size="12"
+      transform="rotate(-90 15 200)"
+      text-anchor="middle"
+    >
+      Distance walked (meters)
+    </text>
+  </svg>
+</div>
+</div>
+
+<h1>Dog Art Visualization</h1>
+<div class="viz-wrapper">
+<svg
+  id="dogArt"
+  width="400"
+  height="300"
+  viewBox="0 0 400 300"
+></svg>
+
+<script src="vis.js"></script>
+</div>
+
+<!-- CONTACT / FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-content">
+    <div class="footer-links">
+      <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
+        <img src="images/gmailLogo.png" alt="Email">
+      </a>
+
+      <a href="https://www.linkedin.com/in/laraine-sim" target="_blank" aria-label="LinkedIn">
+        <img src="images/LinkedIn_icon.png" alt="LinkedIn">
+      </a>
+
+      <a href="https://github.com/las21-sfu" target="_blank" aria-label="GitHub">
+        <img src="images/githubLogo.png" alt="GitHub">
+      </a>
+    </div>
+
+    <p class="footer-copy">
+      © 2026 Laraine Sim. All rights reserved.
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>

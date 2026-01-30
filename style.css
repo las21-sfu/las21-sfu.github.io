@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif
+    
   }
   
   body {
@@ -10,11 +11,11 @@
     color: #111;
   }
   
-  /* HEADER */
   .header {
     display: flex;
-    justify-content: space-between;
-    padding: 20px 32px;
+    justify-content: center;
+    gap: 100px;      
+    padding: 20px 50px;
     background: #3f8efc;
     color: white;
   }
@@ -22,8 +23,8 @@
   .header a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
   }
+  
   
   .hero {
     padding: 80px 32px;
@@ -148,8 +149,6 @@
     justify-items: stretch;
   }
   
-  
-  
   /* Mobile: stack */
   @media (max-width: 768px) {
     .edu-skills {
@@ -157,7 +156,6 @@
       padding: 16px;
     }
   }
-  
   
   /* SECTIONS */
   .section {
@@ -238,16 +236,35 @@
     line-height: 1.5;
   }
   
+  .viz-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+  }
   
+  h1{
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   /* IMAGE GRID */
-  .another {
+  .mywork {
     padding: 48px 32px;
     display: flex;
     flex-direction: column;
     max-width: 2000px;
   }
 
-.another h2{
+.mywork h2{
     padding-bottom: 20px;
     padding-left:50px
 }
