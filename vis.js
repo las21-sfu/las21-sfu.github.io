@@ -14,8 +14,8 @@ const width = 600;
 const height = 400;
 const padding = 50;
 
-const maxTime = Math.max(...dogWalks.map(d => d.time));
-const maxDistance = Math.max(...dogWalks.map(d => d.distance));
+const maxTime = Math.max(...dogWalks.map((d) => d.time));
+const maxDistance = Math.max(...dogWalks.map((d) => d.distance));
 
 // Scale functions
 function scaleX(time) {
@@ -30,8 +30,8 @@ function scaleRadius(time) {
   return 6 + time * 0.4; // happiness
 }
 
-// marrks
-dogWalks.forEach(walk => {
+// marks
+dogWalks.forEach((walk) => {
   const circle = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "circle"
@@ -98,7 +98,7 @@ for (let i = 0; i <= tickCount; i++) {
   svg.appendChild(label);
 }
 
-// --- DOG ART VISUALIZATION ---
+// --- Dog art visualization---
 
 const dogSvg = document.getElementById("dogArt");
 
