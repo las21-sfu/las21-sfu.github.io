@@ -274,7 +274,7 @@ p {
 /* Scroll reveal animation */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(3rem);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
