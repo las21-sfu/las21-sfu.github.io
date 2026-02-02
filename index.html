@@ -1,172 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-  <header class="header">
-    <div class="logo">
-      <a href="index.html"><strong>LS</strong></a>
-    </div>    
-    <nav>
-      <a href="visualizations.html">Visualizations</a>
-    </nav>
-  </header>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html">
+          <strong>LS</strong>
+        </a>
+      </div>
+      <nav>
+        <a href="visualizations.html">Visualizations</a>
+      </nav>
+    </header>
 
-<section class="hero" id="about">
+    <section class="hero" id="about">
+      <div class="hero-cards">
+        <div class="hero-card pink">
+          <img src="images/card1.png" alt="">
+          <span>creative</span>
+        </div>
 
-    <!-- Floating cards -->
-    <div class="hero-cards">
-      <div class="hero-card pink">
-        <p>creative</p>
+        <div class="hero-card purple">
+          <img src="images/card2.png" alt="">
+          <span>funny</span>
+        </div>
+
+        <div class="hero-card green">
+          <img src="images/card3.png" alt="">
+          <span>star trek lover</span>
+        </div>
+
+        <div class="hero-card orange">
+          <img src="images/card4.png" alt="">
+          <span>designer</span>
+        </div>
       </div>
-  
-      <div class="hero-card purple">
-        <p>funny</p>
-      </div>
-  
-      <div class="hero-card green">
-        <p>star trek lover</p>
-      </div>
-  
-      <div class="hero-card orange">
-        <p>designer</p>
-      </div>
-    </div>
-  
-    <!-- Main intro -->
-    <div class="hero-content two-col">
+
+      <div class="hero-content two-col">
         <h1 class="brand">laraine_sim</h1>
-      
-          <p class="description">
-            I’m a SIAT student interested in blending design,
-            programming, and storytelling to create digital experiences.
+        <p class="description">
+          I’m a SIAT student interested in blending design, programming, and storytelling to create digital experiences.
+        </p>
+      </div>
+    </section>
+
+    <div class="edu-skills">
+      <section class="section">
+        <h2>Education</h2>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3>Simon Fraser University</h3>
+            <p>Bachelor of Interactive Arts and Technology, BSC.</p>
+            <br>
+            <h4>Relevant courses:</h4>
+            <p>Introduction to Visual Analytics (IAT 355), etc.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <h2>Skills</h2>
+
+        <div class="card-grid">
+          <div class="card">HTML / CSS</div>
+          <div class="card">JavaScript</div>
+          <div class="card">Processing</div>
+          <div class="card">Photoshop / After Effects</div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section blue">
+      <h2>Experience</h2>
+
+      <div class="experience-card">
+        <div class="experience-item">
+          <h3>IAT 235 — Introduction to Visual Analytics</h3>
+          <span class="experience-meta">Simon Fraser University</span>
+          <p>
+            Designed and developed data visualizations using Processing and Java. Focused on visual clarity, interaction, and communicating insights through design.
+          </p>
+        </div>
+
+        <div class="experience-item">
+          <h3>SFU UPhoto</h3>
+          <span class="experience-meta">Graphic Design Coordinator</span>
+          <p>
+            Collaborated with designers and executive team members to produce cohesive visual materials for 10+ events and promotional campaigns per semester.
           </p>
         </div>
       </div>
-  
-  </section>
+    </section>
 
-  <div class="edu-skills">
+    <section class="mywork">
+      <h2>My Work</h2>
 
-    <!-- EDUCATION -->
-    <section class="section">
-      <h2>Education</h2>
-  
-      <div class="card-grid">
-        <div class="card">
-          <h3>Simon Fraser University</h3>
-          <p>Interactive Arts and Technology, Bachelors of Science</p>
-          <br>
-          <h4>Relevant courses:</h4> 
-          <p>Graphic Design (IAT 102) <br>Introduction to Visual Analytics (IAT 355)  <br>Human-Computer Interaction and Cognition (IAT 201)</p>
+      <div class="image-grid">
+        <div class="image-card">
+          <img src="images/YoutubeThumbnail.png" alt="">
+          <div class="image-card-text">
+            <h3>Aquarium Life</h3>
+            <p>
+              Aquarium Life is an interactive aquarium simulation where users care for a digital tank by adjusting water settings, feeding fish through drag-and-drop interactions, cleaning algae, and adding new fish. The project focuses on exploratory interaction to create an immersive and relaxing experience.
+            </p>
+          </div>
+        </div>
+
+        <div class="image-card">
+          <img src="images/Immortals.png" alt="">
+          <div class="image-card-text">
+            <h3>Kinetic Typography Video</h3>
+            <p>
+              This project explores motion-based typography and graphics to communicate the emotion of a selected audio clip. It applies key animation and motion-design principles to create a visually engaging short video.
+            </p>
+          </div>
+        </div>
+
+        <div class="image-card">
+          <img src="images/Desktop%20Landing%20Page.png" alt="">
+          <div class="image-card-text">
+            <h3>Issue Reporting Platform for SIAT Students</h3>
+            <p>
+              This team project focused on designing an issue reporting platform accessible on both web and mobile for SIAT students. Our goal was to promote transparent, community-driven problem-solving and keep faculty informed of recurring issues.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-  
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <h2>Skills</h2>
-  
-      <div class="card-grid">
-        <div class="card">HTML / CSS</div>
-        <div class="card">JavaScript</div>
-        <div class="card">Processing</div>
-        <div class="card">Photoshop / After Effects</div>
-      </div>
-    </section>
-  
-  </div>
-  
 
-<!-- EXPERIENCE -->
-<section class="section blue">
-    <h2>Experience</h2>
-    <div class="experience-card">
-  
-      <div class="experience-item">
-        <h3>IAT 235 — Introduction to Visual Analytics</h3>
-        <p class="experience-meta">Simon Fraser University</p>
-        <p>
-          Designed and developed data visualizations using Processing and Java.
-          Focused on visual clarity, interaction, and communicating insights
-          through design.
+    <footer class="footer" id="contact">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
+            <img src="images/gmailLogo.png" alt="">
+          </a>
+
+          <a href="https://www.linkedin.com/in/laraine-sim" target="_blank" aria-label="LinkedIn">
+            <img src="images/LinkedIn_icon.png" alt="">
+          </a>
+
+          <a href="https://github.com/las21-sfu" target="_blank" aria-label="GitHub">
+            <img src="images/githubLogo.png" alt="">
+          </a>
+        </div>
+
+        <p class="footer-copy">
+          © 2026 Laraine Sim. All rights reserved.
         </p>
       </div>
-  
-      <div class="experience-item">
-        <h3>SFU UPhoto</h3>
-        <p class="experience-meta"> Graphic Design Coordinator</p>
-        <p>
-            Collaborated with designers and executive team members to produce cohesive
-            visual materials for 10+ events and promotional campaigns per semester.
-        </p>
-      </div>
-  
-    </div>
-  </section>
-  
-
-<section class="mywork">
-    <h2>My Work</h2>
-  
-    <div class="image-grid">
-  
-      <div class="image-card">
-        <img src="images/YoutubeThumbnail.png" alt="">
-        <div class="image-card-text">
-          <h3> Aquarium Life</h3>
-          <p>Aquarium Life is an interactive aquarium simulation where users care for a digital tank by adjusting water settings, feeding fish through drag-and-drop interactions, cleaning algae, and adding new fish. The project focuses on exploratory interaction to create an immersive and relaxing experience.</p>
-        </div>
-      </div>
-  
-      <div class="image-card">
-        <img src="images/Immortals.png" alt="">
-        <div class="image-card-text">
-          <h3>Kinetic Typography Video</h3>
-          <p>This project explores motion-based typography and graphics to communicate the emotion of a selected audio clip. It applies key animation and motion-design principles to create a visually engaging short video.</p>
-        </div>
-      </div>
-  
-      <div class="image-card">
-        <img src="images/Desktop Landing Page.png" alt="">
-        <div class="image-card-text">
-          <h3>Issue Reporting Platform for SIAT Students</h3>
-          <p>This team project focused on designing an issue reporting platform accessible on both web and mobile for SIAT students. Our goal was to promote transparent, community-driven problem-solving and keep faculty informed of recurring issues.          </p>
-        </div>
-      </div>
-  
-    </div>
-  </section>
-  
-
-<!-- CONTACT / FOOTER -->
-<footer class="footer" id="contact">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
-          <img src="images/gmailLogo.png" alt="Email">
-        </a>
-  
-        <a href="https://www.linkedin.com/in/laraine-sim" target="_blank" aria-label="LinkedIn">
-          <img src="images/LinkedIn_icon.png" alt="LinkedIn">
-        </a>
-  
-        <a href="https://github.com/las21-sfu" target="_blank" aria-label="GitHub">
-          <img src="images/githubLogo.png" alt="GitHub">
-        </a>
-      </div>
-  
-      <p class="footer-copy">
-        © 2026 Laraine Sim. All rights reserved.
-      </p>
-    </div>
-  </footer>
-  
-
-</body>
+    </footer>
+  </body>
 </html>
