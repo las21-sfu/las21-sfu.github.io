@@ -17,10 +17,10 @@ This project is a website designed to present interactive visual content in a cl
 - SVG for custom visualizations
 
 ## Project Structure
-/index.html # Main webpage structure
-/css/style.css # Styling and responsive layout rules
-/js/script.js # Visualization logic and interactions
-/assets/ # Images and SVG assets
+- html: index.html: Main webpage structure
+- css: style.css: Styling and responsive layout rules
+- js: script.js: Visualization logic and interactions
+- assets: Images
 
 ## How to Run
 1. Download or clone the repository.
