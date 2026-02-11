@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="videogame.css" />
     <!-- Vega libraries -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -12,39 +12,85 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <div class="logo">
-          <a href="index.html">
-            <strong>LS</strong>
+      <div class="logo">
+        <a href="index.html"> <strong>LS</strong> </a>
+      </div>
+      <nav><a href="visualizations.html">Visualizations</a></nav>
+    </header>
+    <div class="container">
+        <div class="vis-wrapper">
+            <div class="label-box">
+                Visualization 1: Global Sales by Genre and Platform
+              </div>
+              <p>You can click on the visualization and drag it right to see other platforms!</p>
+            <div class="vis-and-summary">
+          
+              <!-- LEFT SIDE (Visualization) -->
+              <div class="vis-area">
+                <div class="sticky-x-label">Platform</div>
+                <div class="sticky-y-label">Genre</div>
+          
+                <div class="vis-scroll">
+                  <div id="vis"></div>
+                </div>
+              </div>
+          
+              <!-- RIGHT SIDE (Summary Box) -->
+              <div class="summary-box">
+                <h4>Total Global Sales</h4>
+                <div class="sales-number" id="totalSales">Loading...</div>
+                <div class="legend-hint">
+                  Circle size and color represent total global sales (millions)
+                </div>
+              </div>
+          
+            </div>
+          </div>     
+      </div>
+      <div class="reflection">
+        <h3>Reflection</h3>
+        <p>
+          The visualization highlights clear dominance patterns across platforms
+          and genres. Certain platforms generate significantly higher global
+          sales, particularly when paired with popular genres like Action and
+          Sports. The darker and larger circles indicate strong market
+          concentration, showing that a limited number of platform–genre
+          combinations account for a substantial share of total sales. Strategy
+          titles vary depending on platform strength, reinforcing how platform
+          popularity strongly influences genre performance.
+        </p>
+      </div>
+    </div>
+    <!-- External JS -->
+    <script src="videoGame.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
+            <img src="images/gmailLogo.png" alt="" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/laraine-sim"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <img src="images/LinkedIn_icon.png" alt="" />
+          </a>
+          <a
+            href="https://github.com/las21-sfu"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <img src="images/githubLogo.png" alt="" />
           </a>
         </div>
-        <nav>
-          <a href="visualizations.html">Visualizations</a>
-        </nav>
-      </header>  
-
-      <footer class="footer" id="contact">
-        <div class="footer-content">
-          <div class="footer-links">
-            <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
-              <img src="images/gmailLogo.png" alt="">
-            </a>
-  
-            <a href="https://www.linkedin.com/in/laraine-sim" target="_blank" aria-label="LinkedIn">
-              <img src="images/LinkedIn_icon.png" alt="">
-            </a>
-  
-            <a href="https://github.com/las21-sfu" target="_blank" aria-label="GitHub">
-              <img src="images/githubLogo.png" alt="">
-            </a>
-          </div>
-          <p class="footer-copy">
-            © 2026 Laraine Sim. All rights reserved.
-          </p>
-        </div>
-      </footer>
-      <script src="videogame.css"></script>
-</body>
+        <p class="footer-copy">© 2026 Laraine Sim. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
