@@ -165,7 +165,132 @@ body {
   .reflection h3 {
     margin-bottom: 10px;
   }
+
+/* MAIN CONTAINER */
+.vis2-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px 0;
+  }
   
+/* Update White Wrapper to match Vis 1 dimensions and padding */
+.vis2-wrapper {
+    position: relative;
+    width: 1100px; /* Same width as .vis-wrapper */
+    background-color: white;
+    padding: 40px 30px; /* Same padding as .vis-wrapper */
+    border-radius: 10px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+    /* Height is removed or set to 'auto' to match Vis 1's content-driven height */
+  }
+  
+  /* DRAG SCROLL AREA */
+  .vis2-scroll {
+    margin-top: 20px; /* Adjust based on label density */
+    width: 100%;
+    height: 550px; /* Match Vis 1's height if consistency is required */
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+  
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .vis2-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #vis2 {
+    min-width: 1200px;
+    min-height: 800px;
+  }
+  
+  /* STICKY AXIS LABELS */
+  .sticky-x-label-2 {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  
+  .sticky-y-label-2 {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-weight: bold;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+
+  .sticky-y-scale-title {
+    position: absolute;
+    left: 20px;
+    top: -2px;
+    font-weight: bold;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+
+  /* Move the horizontal labels (Global Sales and Year) down */
+.sticky-y-scale-title, 
+.sticky-x-label-2 {
+    position: absolute;
+    top: 150px; /* Increase this value to move them further down */
+    z-index: 10;
+}
+
+/* Adjust the specific horizontal placement if needed */
+.sticky-y-scale-title {
+    left: 10px;
+}
+
+.sticky-x-label-2 {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Move the "Genres" label down to align with the first chart row */
+.sticky-y-label-2 {
+    position: absolute;
+    top: 220px; /* Increase this value to move it down the left side */
+    left: 10px;
+    writing-mode: vertical-rl; /* Keeps it vertical as seen in the image */
+    transform: rotate(180deg);
+    z-index: 10;
+}
+
+/* Update the Grey Label Box for Vis 2 to match Vis 1 */
+.label-box-2 {
+    background-color: #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 20px;
+    display: inline-block; /* Matches Vis 1's "pill" look */
+    margin-bottom: 10px;
+  }
+
+  /* Instructions Styling */
+.vis2-wrapper p {
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 0; /* Reset margins to control spacing from the top */
+  }
+
   /* Footer */
 .footer {
   background: #3f8efc;
