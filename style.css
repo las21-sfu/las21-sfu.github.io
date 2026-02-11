@@ -37,7 +37,7 @@ body {
   gap: 1.25rem;
   justify-content: center;
   margin-bottom: 3rem;
-  flex-wrap: wrap; /
+  flex-wrap: wrap; 
 }
 
 .hero-card {
@@ -83,7 +83,6 @@ body {
   }
 }
 
-/* Extra small screens */
 @media (max-width: 23.4375rem) {
   .hero-cards {
     flex-direction: column;
@@ -96,39 +95,34 @@ body {
     margin: 0 auto; 
   }
 
-.hero-content.two-col {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-  padding: 0 1rem;
-  align-items: center;
-}
+  .hero-content.two-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+    align-items: center;
+  }
 
-/* Brand / hero title */
-.brand {
-  font-size: clamp(1rem, 6vw, 3rem); 
-  font-weight: 800;
-  white-space: normal; 
-  text-align: center; 
-  word-break: break-word; 
-}
+  .brand {
+    font-size: clamp(1rem, 6vw, 3rem); 
+    font-weight: 800;
+    white-space: normal; 
+    text-align: center; 
+    word-break: break-word; 
+  }
 
-/* Hero description text */
-.hero .description {
-  font-size: clamp(0.85rem, 3.5vw, 1rem);
-  line-height: 1.4;
-  text-align: center;
+  .hero .description {
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    line-height: 1.4;
+    text-align: center;
+  }
 }
-
 
 @media (max-width: 28rem) { 
   .hero-content.two-col {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-}
-
-
 }
 
 /* Buttons */
