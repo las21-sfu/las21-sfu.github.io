@@ -65,15 +65,29 @@
       </div>
     </div>
 
-    <div class="container">
+    <!-- Visualization 5: Market Footprint (Packed Circles) -->
+    <div class="vis-container-creative">
       <div class="vis-wrapper">
           <div class="label-box">
-              Visualization 1A:<br> <strong>Answers questions:</strong> <br>Which non-Nintendo platform was the most successful in the Platform genre? <br>
-              Which platforms failed to gain traction with Platform games despite high overall hardware popularity?
+              Visualization 9: The Genre-Platform "Market Footprint"
           </div>
-          <p>This visualization shows which platforms dominate the sales of platform  type games.</p>
-          <div id="vis1"></div>
+          <p>Which combinations of genre and hardware occupy the most "global mass"? Larger circles represent higher total sales.</p>
+          <!-- Ensure this ID matches the vegaEmbed call -->
+          <div id="vis9"></div>
       </div>
+  </div>
+
+<!-- Visualization 6: Console Personalities (Radial Donuts) -->
+<div class="vis-container-creative">
+  <div class="vis-wrapper">
+      <div class="label-box">
+          Visualization 6: Console "Genre Personalities"
+      </div>
+      <p>Does a console rely on a balanced library, or is it anchored by a specific genre? Each donut represents a platform's total sales breakdown.</p>
+      <div id="vis10"></div>
+  </div>
+</div>
+
   </div>
   <hr>
     <div class="vis2-container">
@@ -215,15 +229,16 @@
     <div class="vis-wrapper">
         <!-- Grey Label Box at the top -->
         <div class="label-box">
-            Visualization 4: The Story of Regional Divergence
-            Answers Questions: 
+            Visualization 4A: The Story of Regional Divergence
+            <br><strong>Answers Questions:</strong>
             <br>
             Which top-selling titles, such as "Pokemon Red/Blue", show a balanced "intensity" across major markets?<br>
             Which global blockbusters achieved their high global rank almost entirely through North American dominance while showing minimal appeal in Japan?
         </div>
         
         <!-- Instruction text below the label box -->
-        <p>By comparing specific titles across the North American (NA), Japanese (JP), and Global columns, we can see the "market signature" of each game—whether it is a balanced global hit or a regional specialis.</p>
+        <p>By comparing specific titles across the North American (NA), Japanese (JP), and Global columns, 
+          we can see if the games are in demand globally, or have regional popularity.</p>
 
         <!-- Visualization Area -->
         <div id="vis8"></div>

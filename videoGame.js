@@ -487,47 +487,6 @@ const spec3 = {
   
   vegaEmbed("#vis4", spec4);
 
-  const spec1 = {
-    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
-    width: 800,
-    height: 450,
-    data: { url: "data/videogames_wide.csv" },
-    transform: [
-      // 1. Filter for only "Platform" games
-      { filter: "datum.Genre === 'Platform'" }
-    ],
-    mark: "bar",
-    encoding: {
-      y: {
-        field: "Platform",
-        type: "nominal",
-        sort: "-x", // Places the dominating platform at the top
-        title: "Gaming Platform"
-      },
-      x: {
-        field: "Global_Sales",
-        type: "quantitative",
-        aggregate: "sum",
-        title: "Total Global Sales (Millions)"
-      },
-      color: {
-        field: "Platform",
-        type: "nominal",
-        legend: null, // Legend is redundant with Y-axis labels
-        scale: { scheme: "tableau20" }
-      },
-      tooltip: [
-        { field: "Platform", type: "nominal" },
-        { field: "Global_Sales", type: "quantitative", aggregate: "sum", format: ".2f", title: "Total Sales (M)" }
-      ]
-    },
-    config: {
-      axis: { labelFontSize: 12, titleFontSize: 14 }
-    }
-  };
-  
-  vegaEmbed("#vis1", spec1);
-
 /* ========================================
    VISUALIZATION 4: Geographic Appeal —
    NA Sales (x) vs JP Sales (y), sized by
@@ -767,3 +726,48 @@ const spec3 = {
   };
   
   vegaEmbed("#vis8", spec8);
+
+// 1. Renamed constant to spec9
+const spec9 = {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  width: 800,
+  height: 400,
+  data: { url: "data/videogames_wide.csv" },
+  transform: [
+    // Filter for historically significant platforms found in the sources
+    { filter: { field: "Platform", oneOf: ["NES", "DS", "PS2", "Wii", "X360", "PS3", "GB", "SNES"] } }
+  ],
+  mark: { type: "circle", opacity: 0.8, stroke: "black", strokeWidth: 0.5 },
+  encoding: {
+    x: { field: "Genre", type: "nominal", title: "Game Genre" },
+    y: { field: "Platform", type: "nominal", title: "Console Platform" },
+    size: {
+      field: "Global_Sales", // Uses Global_Sales from CSV [1]
+      type: "quantitative",
+      aggregate: "sum",
+      scale: { range:  },
+      title: "Sum of Global Sales (M)"
+    },
+    color: {
+      field: "Platform",
+      type: "nominal",
+      scale: { scheme: "tableau20" },
+      legend: { orient: "right", title: "Platform" }
+    },
+    tooltip: [
+      { field: "Platform", type: "nominal" },
+      { field: "Genre", type: "nominal" },
+      { 
+        field: "Global_Sales", 
+        aggregate: "sum", 
+        type: "quantitative", 
+        format: ".2f", 
+        title: "Total Sales (M)" 
+      }
+    ]
+  },
+  config: { view: { stroke: null } }
+};
+
+// 2. Updated vegaEmbed to target #vis9 and use spec9
+vegaEmbed("#vis9", spec9);

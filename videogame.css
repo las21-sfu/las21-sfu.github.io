@@ -485,11 +485,36 @@ hr {
   }
   
   /* Instruction text */
-  .vis5-wrapper p {
+  .vis9-wrapper p {
     font-size: 20px;
     padding: 8px 16px;
     margin: 0;
   }
+
+.vis-container-creative {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.vis-container-creative .vis-wrapper {
+    width: 1100px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#vis9, #vis10 {
+    margin-top: 30px;
+}
   
   /* Footer */
 .footer {
