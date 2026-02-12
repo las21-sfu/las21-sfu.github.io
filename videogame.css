@@ -25,6 +25,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+hr {
+  border: none; /* Removes the default border */
+  height: 3px; /* Sets the thickness of the line */
+  background-color: #333; /* Changes the line color */
+  width: 90%; /* Sets the width to 50% of the container */
+  margin: 20px auto; /* Centers the line with top/bottom spacing */
+}
+
  /* Main Layout Container */
  .container {
     flex: 1;
@@ -291,6 +300,197 @@ body {
     margin: 0; /* Reset margins to control spacing from the top */
   }
 
+  /* VISUALIZATION 3 STYLES */
+
+/* MAIN CONTAINER */
+.vis3-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px 0;
+  }
+  
+/* White Wrapper matching previous visualizations */
+.vis3-wrapper {
+    position: relative;
+    width: 1100px;
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* DRAG SCROLL AREA - both horizontal and vertical */
+  .vis3-scroll {
+    margin-top: 40px;
+    width: 100%;
+    height: 550px;
+    overflow: auto;
+    cursor: grab;
+  
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .vis3-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #vis3 {
+    min-width: 1200px;
+    min-height: 1000px;
+  }
+  
+  /* STICKY AXIS LABELS with 20px gap from visualization */
+  .sticky-x-label-3 {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 15px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  
+  .sticky-y-label-3 {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-weight: bold;
+    font-size: 15px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+
+  /* Grey Label Box for Vis 3 */
+  .label-box-3 {
+    background-color: #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  /* Instructions Styling for Vis 3 */
+  .vis3-wrapper p {
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 0;
+  }
+
+  .vis4-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the white wrapper horizontally */
+    justify-content: center; /* Centers content vertically if the container has a set height */
+    width: 100%;
+}
+
+#vis4 {
+  display: flex;
+  justify-content: center;
+}
+
+/* =============================================
+   VISUALIZATION 4 STYLES
+   ============================================= */
+
+   .vis5-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px 0;
+  }
+  
+  .vis5-wrapper {
+    position: relative;
+    width: 1100px;
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* Drag-scroll area — both axes */
+  .vis5-scroll {
+    margin-top: 40px;
+    width: 100%;
+    height: 550px;
+    overflow: auto;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .vis5-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #vis5 {
+    min-width: 1200px;
+    min-height: 560px;
+  }
+  
+  /* Sticky x label — bottom-centred, 20px clear of the chart */
+  .sticky-x-label-5 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 15px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  
+  /* Sticky y label — left-centred, rotated, 20px clear of the chart */
+  .sticky-y-label-5 {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-weight: bold;
+    font-size: 15px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  
+  /* Grey label box */
+  .label-box-5 {
+    background-color: #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  /* Instruction text */
+  .vis5-wrapper p {
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 0;
+  }
+  
   /* Footer */
 .footer {
   background: #3f8efc;

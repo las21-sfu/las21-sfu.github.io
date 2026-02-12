@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Video Game Visualizations</title>
     <link rel="stylesheet" href="videogame.css" />
     <!-- Vega libraries -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -65,6 +65,17 @@
       </div>
     </div>
 
+    <div class="container">
+      <div class="vis-wrapper">
+          <div class="label-box">
+              Visualization 1A:<br> <strong>Answers questions:</strong> <br>Which non-Nintendo platform was the most successful in the Platform genre? <br>
+              Which platforms failed to gain traction with Platform games despite high overall hardware popularity?
+          </div>
+          <p>This visualization shows which platforms dominate the sales of platform  type games.</p>
+          <div id="vis1"></div>
+      </div>
+  </div>
+  <hr>
     <div class="vis2-container">
         <div class="vis2-wrapper">
             <!-- Grey Label Box at the very top -->
@@ -100,6 +111,125 @@
           popularity strongly influences genre performance.
         </p>
       </div>
+
+      <div class="vis3-container">
+        <div class="vis-wrapper">
+            <div class="label-box">
+                Visualization 3: Regional Market Composition by PS4, XOne, PC and WiiU (direct competitors).
+                <br> <strong>Questions Answered: </strong><br>Which regions have the most balanced distribution of platform sales? <br>
+                How do total sales for the PS4 compare to its direct competitors (XOne, PC, and WiiU) within each specific region?
+            </div>
+            <p> This bar chart compares the total sales of the PS4, XOne, PC, and WiiU across North American, European, and Japanese markets, illustrating regional performance trends and direct competition between platforms</p>
+            <div id="vis7"></div>
+        </div>
+    </div>
+      <hr>
+       <!-- Visualization 3 -->
+       <div class="vis3-container">
+        <div class="vis3-wrapper">
+            <!-- Grey Label Box at the very top -->
+            <div class="label-box-3">
+                Visualization 3: Regional Sales vs. Platform
+            </div>
+            
+            <!-- Instruction text below the label box -->
+            <p class="vis3-instructions">Click and drag to explore different platforms and sales regions!</p>
+    
+            <!-- Sticky Labels -->
+            <div class="sticky-x-label-3">Platform</div>
+            <div class="sticky-y-label-3">Sales Type</div>
+    
+            <!-- Scrollable Visualization Area -->
+            <div class="vis3-scroll">
+                <div id="vis3"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reflection">
+        <h3>Reflection</h3>
+        <p>
+          The visualization reveals distinct regional preferences across gaming platforms. 
+          North American sales dominate for most platforms, particularly for Xbox and PlayStation consoles, 
+          reflecting strong brand loyalty and market penetration in the region. Japanese sales show 
+          pronounced preference for Nintendo platforms and handheld devices, demonstrating the cultural 
+          affinity for portable gaming and local brands. European sales patterns closely mirror North 
+          American trends but at lower absolute volumes, suggesting similar gaming preferences across 
+          Western markets. Other regions contribute modestly across all platforms, indicating developing 
+          markets or limited data coverage. The visualization clearly illustrates how platform popularity 
+          varies significantly by geography, with Nintendo's stronger performance in Japan versus Microsoft's 
+          dominance in Western markets being particularly noteworthy.
+        </p>
+      </div>
+
+      <div class="vis4-container">
+        <div class="vis-wrapper">
+            <div class="label-box">
+                Visualization 3A: <br> <strong>Answers questions: </strong><br>In which region does the PS4 have its strongest market presence: North America, Europe, or Japan?<br> Which region represents the weakest market presence for the PS4 among the three major territories?
+
+            </div>
+            <p>This chart compares total sales across North America, Europe, and Japan for the PS4 platform.</p>
+            <div id="vis4"></div>
+        </div>
+    </div>
+    <hr>
+         <!-- Visualization 4 -->
+    <div class="vis5-container">
+      <div class="vis5-wrapper">
+          <!-- Grey Label Box -->
+          <div class="label-box-5">
+              Visualization 4: Geographic Appeal and Market Balance of Individual Game Titles in NA, JP, and Global Sales
+          </div>
+
+          <!-- Instruction text -->
+          <p class="vis5-instructions">Click or hover over a dot to highlight it. Move elsewhere to deselect.</p>
+
+          <!-- Sticky Axis Labels -->
+          <div class="sticky-x-label-5">NA Sales (Millions)</div>
+          <div class="sticky-y-label-5">JP Sales (Millions)</div>
+
+          <!-- Visualization Area -->
+          <div class="vis5-scroll">
+              <div id="vis5"></div>
+          </div>
+      </div>
+  </div>
+
+  <div class="reflection">
+      <h3>Reflection</h3>
+      <p>
+          I chose a scatterplot because it is the most effective way to simultaneously reveal three variables — NA Sales,
+          JP Sales, and Global Sales — for hundreds of individual game titles at once. The x/y axes directly expose the
+          relationship between two regional markets, making it immediately clear whether a title resonated in one region
+          but not the other (dots hugging the axes) versus titles with balanced cross-regional appeal (dots spread
+          diagonally). Encoding Global Sales as circle size adds a third dimension without cluttering the view, letting
+          the eye naturally group blockbusters from niche titles. I was curious whether high NA performers are simply
+          absent from Japan, or whether there is any overlap at the top — and the scatterplot makes that question
+          answerable at a glance. Each game name is colour-coded so that individual titles remain distinguishable on
+          hover, while the click-to-highlight interaction allows viewers to isolate any single dot and read its exact
+          values through the tooltip without losing the overall distribution for context.
+      </p>
+  </div>
+
+  <div class="vis4-container">
+    <div class="vis-wrapper">
+        <!-- Grey Label Box at the top -->
+        <div class="label-box">
+            Visualization 4: The Story of Regional Divergence
+            Answers Questions: 
+            <br>
+            Which top-selling titles, such as "Pokemon Red/Blue", show a balanced "intensity" across major markets?<br>
+            Which global blockbusters achieved their high global rank almost entirely through North American dominance while showing minimal appeal in Japan?
+        </div>
+        
+        <!-- Instruction text below the label box -->
+        <p>By comparing specific titles across the North American (NA), Japanese (JP), and Global columns, we can see the "market signature" of each game—whether it is a balanced global hit or a regional specialis.</p>
+
+        <!-- Visualization Area -->
+        <div id="vis8"></div>
+    </div>
+</div>
+
     <!-- External JS -->
     <script src="videoGame.js"></script>
 
