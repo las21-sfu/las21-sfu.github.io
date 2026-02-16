@@ -1,3 +1,39 @@
+/* ==========================================================================
+   IMPORTS
+   ========================================================================== */
+   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+
+:root {
+  --green-pale:    #f0faf0;
+  --green-light:   #a3dba3;
+  --green-mid:     #6cc06c;
+  --green-dark:    #2e7d32;
+  --green-ink:     #1a3a1a;
+  --bg:            #f4f6f8;
+  --white:         #ffffff;
+  --ink:           #1a1a1a;
+  --ink-muted:     #4a4a4a;
+  --ink-soft:      #6b7280;
+  --border:        #e2e8e2;
+  --border-strong: #c5d9c5;
+  --reflection-bg: #f5fff8;
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:     0 4px 24px rgba(0,0,0,0.09);
+  --font-body:     'DM Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  --font-mono:     'DM Mono', 'Courier New', monospace;
+  --radius:        12px;
+  --radius-sm:     8px;
+  --green-light: #a3dba3;
+  --green-mid:   #6cc06c;
+  --green-dark:  #2e7d32;
+  --bg:          #f4f6f8;
+  --white:       #ffffff;
+  --ink:         #1a1a1a;
+  --ink-muted:   #555;
+  --border:      #e0e6ea;
+}
+
 /* ============================================================
    GLOBAL RESET & BASE
    ============================================================ */
@@ -5,39 +41,51 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+    font-family: var(--font-body)
   }
   
   body {
     background: #f4f6f8;
     color: #111;
   }
-  
-  
-  /* ============================================================
-     SECTION: HEADER
-     ============================================================ */
-  .header {
-    display: flex;
-    justify-content: center;
-    gap: 6.25rem;
-    padding: 1.25rem 3.125rem;
-    background: #a3dba3;
-    color: white;
-  }
-  
-  .header a {
-    color: rgb(37, 37, 37);
-    text-decoration: none;
-  }
-  
-  /* Header responsive */
-  @media (max-width: 48rem) {
-    .header {
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-  }
+     .header {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 5rem;
+     padding: 1.1rem 3rem;
+     background: var(--green-ink);
+     border-bottom: 3px solid var(--green-mid);
+     position: sticky;
+     top: 0;
+     z-index: 100;
+     box-shadow: var(--shadow-md);
+   }
+   
+   .header .logo a {
+     font-family: var(--font-mono);
+     font-weight: 500;
+     font-size: 1.05rem;
+     color: var(--green-light);
+     text-decoration: none;
+     letter-spacing: 0.05em;
+   }
+   
+   .header nav a {
+     font-size: 0.85rem;
+     font-weight: 500;
+     color: rgba(255,255,255,0.7);
+     text-decoration: none;
+     letter-spacing: 0.02em;
+     padding-bottom: 2px;
+     border-bottom: 1px solid transparent;
+     transition: color 0.2s ease, border-color 0.2s ease;
+   }
+   
+   .header nav a:hover {
+     color: var(--green-light);
+     border-bottom-color: var(--green-light);
+   }
   
   
   /* ============================================================
@@ -85,6 +133,7 @@
   
   .hero-content.two-col h1.brand {
     text-align: left;
+    font-family: var(--font-mono);
     font-size: clamp(1.5rem, 5vw, 2rem);
     margin: 0;
   }
@@ -400,45 +449,49 @@
   opacity: 1;
   transform: translateY(0);
 }
-  /* ============================================================
-     SECTION: FOOTER
-     ============================================================ */
-  .footer {
-    background: #a3dba3;
-    color: rgb(37, 37, 37);
-    padding: 2rem 1rem;
-    margin-top: auto;
-  }
-  
-  .footer-content {
-    max-width: 56.25rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .footer-links a img {
-    width: 2.1875rem;
-    height: 1.875rem;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  
-  .footer-links a:hover img {
-    transform: translateY(-0.125rem);
-    opacity: 0.8;
-  }
-  
-  .footer-copy {
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-  
+   /* ==========================================================================
+      FOOTER
+      ========================================================================== */
+      .footer {
+        background: var(--green-ink);
+        color: white;
+        padding: 2.5rem 1rem;
+        margin-top: 72px;
+        border-top: 3px solid var(--green-mid);
+      }
+      
+      .footer-content {
+        max-width: 56rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .footer-links a img {
+        width: 28px;
+        height: 24px;
+        opacity: 0.65;
+        filter: brightness(0) invert(1);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+      
+      .footer-links a:hover img {
+        opacity: 1;
+        transform: translateY(-3px);
+      }
+      
+      .footer-copy {
+        font-family: var(--font-mono);
+        font-size: 0.73rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 0.05em;
+      }
   
   /* ============================================================
      VISUALIZATIONS

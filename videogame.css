@@ -1,832 +1,917 @@
 /* ==========================================================================
-   GLOBAL RESET & BASE STYLES
+   IMPORTS
    ========================================================================== */
+   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+   /* ==========================================================================
+      CSS VARIABLES
+      ========================================================================== */
+   :root {
+     --green-pale:    #f0faf0;
+     --green-light:   #a3dba3;
+     --green-mid:     #6cc06c;
+     --green-dark:    #2e7d32;
+     --green-ink:     #1a3a1a;
+     --bg:            #f4f6f8;
+     --white:         #ffffff;
+     --ink:           #1a1a1a;
+     --ink-muted:     #4a4a4a;
+     --ink-soft:      #6b7280;
+     --border:        #e2e8e2;
+     --border-strong: #c5d9c5;
+     --reflection-bg: #f5fff8;
+     --shadow-sm:     0 2px 8px rgba(0,0,0,0.06);
+     --shadow-md:     0 4px 24px rgba(0,0,0,0.09);
+     --font-body:     'DM Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+     --font-mono:     'DM Mono', 'Courier New', monospace;
+     --radius:        12px;
+     --radius-sm:     8px;
+     --green-light: #a3dba3;
+     --green-mid:   #6cc06c;
+     --green-dark:  #2e7d32;
+     --bg:          #f4f6f8;
+     --white:       #ffffff;
+     --ink:         #1a1a1a;
+     --ink-muted:   #555;
+     --border:      #e0e6ea;
+
+     /* Data-type chip colours */
+     --chip-cat:    #e8f5e9;
+     --chip-cat-txt:#2e7d32;
+     --chip-num:    #e3f2fd;
+     --chip-num-txt:#1565c0;
+     --chip-temp:   #fff3e0;
+     --chip-temp-txt:#e65100;
+   }
+   
+   /* ==========================================================================
+      RESET & BASE
+      ========================================================================== */
    *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  :root {
-    --font-main: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-    --color-header-bg: #a3dba3;
-    --color-page-bg: #f4f6f8;
-    --color-white: #ffffff;
-    --color-text: #111111;
-    --color-label-bg: #e0e0e0;
-    --color-border-accent: #004085;
-    --color-blue: #3f8efc;
-    --color-footer-bg: #a3dba3;;
-    --color-reflection-bg: #f5fff8;
-    --shadow-card: 0px 8px 25px rgba(0, 0, 0, 0.12);
-    --shadow-subtle: 0px 6px 18px rgba(0, 0, 0, 0.08);
-    --radius-card: 10px;
-    --radius-label: 10px;
-  }
-  
-  html {
-    font-family: var(--font-main);
-    color: var(--color-text);
-    background: var(--color-page-bg);
-  }
-  
-  body {
-    min-height: 100vh;
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+   
+   html {
+     font-family: var(--font-body);
+     color: var(--ink);
+     background: var(--bg);
+     scroll-behavior: smooth;
+   }
+   
+   body {
+     min-height: 100vh;
+     display: flex;
+     flex-direction: column;
+     animation: pageFadeIn 0.5s ease forwards;
+   }
+   
+   @keyframes pageFadeIn {
+     from { opacity: 0; transform: translateY(10px); }
+     to   { opacity: 1; transform: translateY(0); }
+   }
+   
+   /* ==========================================================================
+      SCROLL-REVEAL
+      ========================================================================== */
+   .reveal {
+     opacity: 0;
+     transform: translateY(24px);
+     transition: opacity 0.6s ease, transform 0.6s ease;
+   }
+   
+   .reveal.visible {
+     opacity: 1;
+     transform: translateY(0);
+   }
+   
+   /* ==========================================================================
+      HR DIVIDER
+      ========================================================================== */
+   hr {
+     border: none;
+     height: 2px;
+     background: linear-gradient(90deg, transparent, var(--green-light), transparent);
+     width: 90%;
+     margin: 48px auto;
+     opacity: 0;
+     transition: opacity 0.7s ease;
+   }
+   
+   hr.visible { opacity: 1; }
+   
+   /* ==========================================================================
+      HEADER
+      ========================================================================== */
+   .header {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 5rem;
+     padding: 1.1rem 3rem;
+     background: var(--green-ink);
+     border-bottom: 3px solid var(--green-mid);
+     position: sticky;
+     top: 0;
+     z-index: 100;
+     box-shadow: var(--shadow-md);
+   }
+   
+   .header .logo a {
+     font-family: var(--font-mono);
+     font-weight: 500;
+     font-size: 1.05rem;
+     color: var(--green-light);
+     text-decoration: none;
+     letter-spacing: 0.05em;
+   }
+   
+   .header nav a {
+     font-size: 0.85rem;
+     font-weight: 500;
+     color: rgba(255,255,255,0.7);
+     text-decoration: none;
+     letter-spacing: 0.02em;
+     padding-bottom: 2px;
+     border-bottom: 1px solid transparent;
+     transition: color 0.2s ease, border-color 0.2s ease;
+   }
+   
+   .header nav a:hover {
+     color: var(--green-light);
+     border-bottom-color: var(--green-light);
+   }
+
+    /* CSS, table*/
+  .page-wrapper {
     display: flex;
-    flex-direction: column;
-  }
-  
-  /* ==========================================================================
-     HR DIVIDER
-     ========================================================================== */
-  hr {
-    border: none;
-    height: 3px;
-    background-color: #333;
-    width: 90%;
-    margin: 20px auto;
-  }
-  
-  /* ==========================================================================
-     HEADER
-     ========================================================================== */
-  .header {
-    display: flex;
-    justify-content: center;
-    gap: 6.25rem;
-    padding: 1.25rem 3.125rem;
-    background: var(--color-header-bg);
-    color: white;
-  }
-  
-  .header a {
-    color: rgb(37, 37, 37);
-    text-decoration: none;
-  }
-  
-  /* ==========================================================================
-     INSIGHT / ANALYSIS CARDS (top section)
-     ========================================================================== */
-  .analysis-section {
-    padding: 20px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f8f9fa;
-  }
-  
-  .insight-card {
-    width: 95%;
-    max-width: 1100px;
-    margin: 20px auto;
-    background-color: var(--color-white);
-    border-radius: 12px;
-    box-shadow: var(--shadow-card);
-    padding: 30px;
-    border-left: 6px solid var(--color-border-accent);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    box-sizing: border-box;
-  }
-  
-  .insight-card:hover {
-    transform: translateY(-2px);
-  }
-  
-  .insight-card h3 {
-    font-size: 1.5rem;
-  }
-  
-  .insight-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  /* ==========================================================================
-     SHARED: LABEL BOX (title pill for all visualizations)
-     ========================================================================== */
-  .vis-label-box {
-    background-color: var(--color-label-bg);
-    padding: 8px 16px;
-    border-radius: var(--radius-label);
-    font-size: 20px;
-    color: #333;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-  
-  /* ==========================================================================
-     SHARED: REFLECTION SECTION
-     ========================================================================== */
-  .reflection {
-    width: 95%;
-    max-width: 1100px;
-    margin: 30px auto;
-    background-color: var(--color-reflection-bg);
-    border-radius: 10px;
-    padding: 3rem;
-    text-align: left;
-    font-size: 15px;
-    color: #333;
-    line-height: 1.6;
-    box-shadow: var(--shadow-subtle);
-  }
-  
-  .reflection h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-  }
-  
-  /* ==========================================================================
-     SHARED: DRAG-SCROLL UTILITY (used inside scroll areas)
-     ========================================================================== */
-  .drag-scroll {
-    overflow: auto;
-    cursor: grab;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .drag-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .drag-scroll:active {
-    cursor: grabbing;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 1: Global Sales by Genre and Platform (Bubble Matrix)
-     ========================================================================== */
-  #vis1-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0 0 0;
-  }
-  
-  .vis1-wrapper {
-    position: relative;
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px 30px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .vis1-body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-  }
-  
-  .vis1-area {
-    position: relative;
-    width: 800px;
-  }
-  
-  .vis1-scroll {
-    margin-top: 50px;
-    width: 100%;
-    height: 550px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    cursor: grab;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .vis1-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #vis1 {
-    min-width: 1200px;
-  }
-  
-  /* Sticky axis labels for vis1 */
-  .vis1-x-label {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 20;
-  }
-  
-  .vis1-y-label {
-    position: absolute;
-    left: -20px;
-    top: 40%;
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: center;
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 20px;
-    border-radius: 6px;
-    z-index: 20;
-  }
-  
-  /* Summary box beside vis1 */
-  .vis1-summary-box {
-    width: 200px;
-    height: 200px;
-    background: #f7f9fc;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: var(--shadow-subtle);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  
-  .vis1-summary-box h4 {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-  
-  .vis1-sales-number {
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--color-blue);
-    margin-bottom: 20px;
-  }
-  
-  .vis1-legend-hint {
-    font-size: 13px;
-    color: #555;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 2: Console "Genre Personalities" (Radial Donuts)
-     ========================================================================== */
-  #vis2-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 50px;
-  }
-  
-  .vis2-wrapper {
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #vis2 {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 3: Regional Sales vs. Platform — Area Chart (by Genre + Year)
-     ========================================================================== */
-  #vis3-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 60px 0;
-  }
-  
-  .vis3-wrapper {
-    position: relative;
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px 30px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  .vis3-scroll {
-    margin-top: 20px;
-    width: 100%;
-    height: 550px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    cursor: grab;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .vis3-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #vis3 {
-    min-width: 1200px;
-    min-height: 800px;
-  }
-  
-  .vis3-x-label {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  .vis3-y-label {
-    position: absolute;
-    left: 10px;
-    top: 220px;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-weight: bold;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  .vis3-scale-title {
-    position: absolute;
-    left: 10px;
-    top: 150px;
-    font-weight: bold;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 4: Regional Market Composition — Grouped Bar (PS4 vs competitors)
-     ========================================================================== */
-  #vis4-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 30px 0;
-  }
-  
-  .vis4-wrapper {
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px 30px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #vis4 {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 5: Regional Sales by Platform — Multi-row Line Chart
-     ========================================================================== */
-  #vis5-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 60px 0;
-  }
-  
-  .vis5-wrapper {
-    position: relative;
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px 30px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  .vis5-scroll {
-    margin-top: 40px;
-    width: 100%;
-    height: 550px;
-    overflow: auto;
-    cursor: grab;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .vis5-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #vis5 {
-    min-width: 1200px;
-    min-height: 1000px;
-  }
-  
-  .vis5-x-label {
-    position: absolute;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  .vis5-y-label {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 6: Proportional Market Dependency — Heatmap
-     ========================================================================== */
-  #vis6-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 50px;
-  }
-  
-  .vis6-wrapper {
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #vis6 {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 7: East-West "Symmetry" Plot
-     ========================================================================== */
-  #vis7-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 50px;
-  }
-  
-  .vis7-wrapper {
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #vis7 {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 8: Geographic Appeal — NA vs JP Scatterplot
-     ========================================================================== */
-  #vis8-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 60px 0;
-  }
-  
-  .vis8-wrapper {
-    position: relative;
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px 30px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  .vis8-scroll {
-    margin-top: 40px;
-    width: 100%;
-    height: 550px;
-    overflow: auto;
-    cursor: grab;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .vis8-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #vis8 {
-    min-width: 1200px;
-    min-height: 560px;
-  }
-  
-  .vis8-x-label {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  .vis8-y-label {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  /* ==========================================================================
-     VISUALIZATION 9: Regional Divergence Heatmap
-     ========================================================================== */
-  #vis9-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 30px 0 60px 0;
-  }
-  
-  .vis9-wrapper {
-    width: 1100px;
-    background-color: var(--color-white);
-    padding: 40px 30px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #vis9 {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* ==========================================================================
-     FOOTER
-     ========================================================================== */
-  .footer {
-    background: var(--color-footer-bg);
-    color: rgb(37, 37, 37);
-    padding: 2rem 1rem;
-    margin-top: auto;
-  }
-  
-  .footer-content {
-    max-width: 56.25rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .footer-links a img {
-    width: 2.1875rem;
-    height: 1.875rem;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  
-  .footer-links a:hover img {
-    transform: translateY(-0.125rem);
-    opacity: 0.8;
-  }
-  
-  .footer-copy {
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-  
-  /* ==========================================================================
-     RESPONSIVE — DESKTOP (max 1200px)
-     ========================================================================== */
-  @media screen and (max-width: 1200px) {
-    .vis1-wrapper,
-    .vis2-wrapper,
-    .vis3-wrapper,
-    .vis4-wrapper,
-    .vis5-wrapper,
-    .vis6-wrapper,
-    .vis7-wrapper,
-    .vis8-wrapper,
-    .vis9-wrapper {
-      width: 95%;
-    }
-  
-    .vis1-area {
-      width: 100%;
-    }
-  
-    .vis1-body {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .vis1-summary-box {
-      width: 100%;
-      height: auto;
-      flex-direction: row;
-      align-items: center;
-      gap: 20px;
-    }
-  }
-  
-  /* ==========================================================================
-     RESPONSIVE — TABLET / LARGE MOBILE (max 768px)
-     ========================================================================== */
-  @media screen and (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-      padding: 1rem;
-    }
-  
-    .insight-card {
-      padding: 20px;
-      border-left-width: 4px;
-    }
-  
-    .insight-card h3 {
-      font-size: 1.2rem;
-    }
-  
-    .insight-card p {
-      font-size: 0.9rem;
-    }
-  
-    .vis-label-box {
-      font-size: 16px;
-    }
-  
-    .reflection {
-      padding: 2rem;
-    }
-  
-    .vis1-scroll,
-    .vis3-scroll,
-    .vis5-scroll,
-    .vis8-scroll {
-      height: 400px;
-    }
-  }
-  
-  /* ==========================================================================
-     RESPONSIVE — MOBILE 640px
-     ========================================================================== */
-  @media screen and (max-width: 640px) {
-    .header {
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-    }
-  
-    .insight-card {
-      padding: 15px;
-    }
-  
-    .vis-label-box {
-      font-size: 14px;
-      padding: 6px 12px;
-    }
-  
-    .reflection {
-      padding: 1.5rem;
-      font-size: 14px;
-    }
-  
-    .vis1-wrapper,
-    .vis2-wrapper,
-    .vis3-wrapper,
-    .vis4-wrapper,
-    .vis5-wrapper,
-    .vis6-wrapper,
-    .vis7-wrapper,
-    .vis8-wrapper,
-    .vis9-wrapper {
-      width: 100%;
-      border-radius: 0;
-      padding: 20px 15px;
-    }
-  
-    .vis1-scroll,
-    .vis3-scroll,
-    .vis5-scroll,
-    .vis8-scroll {
-      height: 350px;
-    }
-  
-    .vis1-summary-box {
-      width: 100%;
-      height: auto;
-    }
-  
-    .vis1-sales-number {
-      font-size: 22px;
-    }
-  
-    /* Hide rotated axis labels on very small screens — they overlap on mobile */
-    .vis1-y-label,
-    .vis3-y-label,
-    .vis5-y-label,
-    .vis8-y-label {
-      display: none;
-    }
-  }
-  
-  /* ==========================================================================
-     RESPONSIVE — MOBILE 320px
-     ========================================================================== */
-  @media screen and (max-width: 320px) {
-    .header {
-      gap: 0.3rem;
-      padding: 0.5rem;
-      font-size: 13px;
-    }
-  
-    .vis-label-box {
-      font-size: 12px;
-      padding: 5px 10px;
-    }
-  
-    .reflection {
-      padding: 1rem;
-      font-size: 13px;
-    }
-  
-    .vis1-scroll,
-    .vis3-scroll,
-    .vis5-scroll,
-    .vis8-scroll {
-      height: 280px;
-    }
-  
-    .vis1-sales-number {
-      font-size: 18px;
-    }
-  
-    .insight-card h3 {
-      font-size: 1rem;
-    }
-  
-    .insight-card p {
-      font-size: 0.8rem;
-    }
-  }
+    justify-content: center; 
+    padding: 2rem;           
+  }
+
+   .card {
+   background: var(--white);
+   border-radius: 16px;
+   box-shadow: 0 4px 32px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+   overflow: hidden;
+   width: 100%;
+   max-width: 860px;
+   
+ }
+
+ /* ── Header ─────────────────────────────────── */
+ .card-header {
+   background: var(--green-light);
+   padding: 1.6rem 2rem;
+   display: flex;
+   align-items: center;
+   gap: 0.75rem;
+   border-bottom: 2px solid var(--green-mid);
+ }
+
+ .card-header .icon {
+   width: 36px;
+   height: 36px;
+   background: var(--green-dark);
+   border-radius: 8px;
+   display: grid;
+   place-items: center;
+   flex-shrink: 0;
+ }
+
+ .card-header .icon svg {
+   width: 20px;
+   height: 20px;
+   fill: none;
+   stroke: white;
+   stroke-width: 2;
+   stroke-linecap: round;
+ }
+
+ .card-header h2 {
+   font-family: 'DM Sans', sans-serif;
+   font-weight: 600;
+   font-size: 1.15rem;
+   color: #1a3a1a;
+   letter-spacing: -0.01em;
+ }
+
+ .card-header .subtitle {
+   font-size: 0.8rem;
+   color: #3a5a3a;
+   font-weight: 400;
+   margin-top: 2px;
+ }
+
+ /* ── Table ───────────────────────────────────── */
+ .table-wrap {
+   overflow-x: auto;
+ }
+
+ table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+
+ thead th {
+   background: #f0f7f0;
+   font-size: 0.7rem;
+   font-weight: 600;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+   color: var(--green-dark);
+   padding: 0.85rem 1.5rem;
+   text-align: left;
+   border-bottom: 2px solid var(--green-light);
+ }
+
+ thead th:first-child { width: 18%; }
+ thead th:nth-child(2) { width: 48%; }
+ thead th:last-child  { width: 34%; }
+
+ tbody tr {
+   border-bottom: 1px solid var(--border);
+   opacity: 0;
+   transform: translateY(8px);
+   animation: rowIn 0.35s ease forwards;
+ }
+
+ tbody tr:last-child { border-bottom: none; }
+ tbody tr:hover { background: #f7fbf7; }
+
+ /* Stagger each row */
+ tbody tr:nth-child(1)  { animation-delay: 0.05s; }
+ tbody tr:nth-child(2)  { animation-delay: 0.10s; }
+ tbody tr:nth-child(3)  { animation-delay: 0.15s; }
+ tbody tr:nth-child(4)  { animation-delay: 0.20s; }
+ tbody tr:nth-child(5)  { animation-delay: 0.25s; }
+ tbody tr:nth-child(6)  { animation-delay: 0.30s; }
+ tbody tr:nth-child(7)  { animation-delay: 0.35s; }
+ tbody tr:nth-child(8)  { animation-delay: 0.40s; }
+ tbody tr:nth-child(9)  { animation-delay: 0.45s; }
+ tbody tr:nth-child(10) { animation-delay: 0.50s; }
+
+ @keyframes rowIn {
+   to { opacity: 1; transform: translateY(0); }
+ }
+
+ td {
+   padding: 0.95rem 1.5rem;
+   vertical-align: middle;
+   font-size: 0.9rem;
+   color: var(--ink-muted);
+   line-height: 1.5;
+ }
+
+ /* Variable name — monospace pill */
+ .var-name {
+   font-family: 'DM Mono', monospace;
+   font-weight: 500;
+   font-size: 0.82rem;
+   color: var(--green-dark);
+   background: var(--chip-cat);
+   padding: 3px 9px;
+   border-radius: 5px;
+   white-space: nowrap;
+   display: inline-block;
+   border: 1px solid rgba(46,125,50,0.15);
+ }
+
+ td.desc { color: var(--ink); font-weight: 400; }
+
+ /* Data type chip */
+ .chip {
+   display: inline-flex;
+   align-items: center;
+   gap: 5px;
+   font-size: 0.75rem;
+   font-weight: 500;
+   padding: 4px 10px;
+   border-radius: 20px;
+   white-space: nowrap;
+ }
+
+ .chip::before {
+   content: '';
+   width: 6px;
+   height: 6px;
+   border-radius: 50%;
+   flex-shrink: 0;
+ }
+
+ .chip.categorical {
+   background: var(--chip-cat);
+   color: var(--chip-cat-txt);
+ }
+ .chip.categorical::before { background: var(--chip-cat-txt); }
+
+ .chip.numerical {
+   background: var(--chip-num);
+   color: var(--chip-num-txt);
+ }
+ .chip.numerical::before { background: var(--chip-num-txt); }
+
+ .chip.temporal {
+   background: var(--chip-temp);
+   color: var(--chip-temp-txt);
+ }
+ .chip.temporal::before { background: var(--chip-temp-txt); }
+
+ .chip-sub {
+   display: block;
+   font-size: 0.68rem;
+   font-weight: 400;
+   opacity: 0.8;
+   margin-top: 3px;
+   padding-left: 2px;
+ }
+
+ /* ── Legend ──────────────────────────────────── */
+ .legend {
+   display: flex;
+   gap: 1.25rem;
+   flex-wrap: wrap;
+   padding: 0.9rem 1.5rem;
+   background: #f9fdf9;
+   border-top: 1px solid var(--border);
+ }
+
+ .legend-item {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   font-size: 0.73rem;
+   color: var(--ink-muted);
+ }
+
+ .legend-dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+ }
+
+ /* ── Responsive ──────────────────────────────── */
+ @media (max-width: 640px) {
+   .card-header { padding: 1.2rem; }
+   td, thead th { padding: 0.75rem 1rem; }
+   .card-header h2 { font-size: 1rem; }
+   .chip-sub { display: none; }
+ }
+
+ @media (max-width: 320px) {
+   td, thead th { padding: 0.6rem 0.6rem; font-size: 0.78rem; }
+   .var-name { font-size: 0.72rem; }
+ }
+   
+   /* ==========================================================================
+      INSIGHT CARDS (dark hero band)
+      ========================================================================== */
+   .analysis-section {
+     padding: 48px 16px 40px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 14px;
+     background: var(--green-ink);
+   }
+   
+   .insight-card {
+     width: 95%;
+     max-width: 860px;
+     background: rgba(255,255,255,0.055);
+     border: 1px solid rgba(163,219,163,0.18);
+     border-left: 4px solid var(--green-light);
+     border-radius: var(--radius);
+     padding: 20px 26px;
+     cursor: pointer;
+     transition: background 0.25s ease, transform 0.2s ease, border-left-color 0.25s ease;
+   }
+   
+   .insight-card:hover {
+     background: rgba(255,255,255,0.09);
+     transform: translateX(5px);
+     border-left-color: var(--green-mid);
+   }
+   
+   .insight-card h3 {
+     font-size: 0.9rem;
+     font-weight: 600;
+     color: var(--green-light);
+     letter-spacing: 0.02em;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     user-select: none;
+   }
+   
+   .insight-card h3::before {
+     content: '';
+     display: inline-block;
+     width: 7px;
+     height: 7px;
+     background: var(--green-mid);
+     border-radius: 50%;
+     flex-shrink: 0;
+     transition: transform 0.25s ease;
+   }
+   
+   .insight-card:hover h3::before {
+     transform: scale(1.6);
+   }
+   
+   /* Smooth expand — JS toggles .open class */
+   .summary-text {
+     overflow: hidden;
+     max-height: 0;
+     opacity: 0;
+     transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.3s ease;
+     margin-top: 0;
+   }
+   
+   .summary-text.open {
+     max-height: 300px;
+     opacity: 1;
+     margin-top: 14px;
+   }
+   
+   .summary-text p {
+     font-size: 0.875rem;
+     line-height: 1.75;
+     color: rgba(255,255,255,0.72);
+   }
+   
+   .summary-text strong { color: var(--green-light); }
+   .summary-text i      { color: rgba(255,255,255,0.9); }
+  
+   /* ==========================================================================
+      SHARED: LABEL BOX
+      ========================================================================== */
+   .vis-label-box {
+     display: inline-block;
+     background: var(--green-pale);
+     border: 1px solid var(--border-strong);
+     color: var(--green-dark);
+     font-family: var(--font-mono);
+     font-size: 0.78rem;
+     font-weight: 500;
+     padding: 5px 12px;
+     border-radius: 6px;
+     letter-spacing: 0.03em;
+     margin-bottom: 10px;
+   }
+   
+   /* ==========================================================================
+      SHARED: VIS SECTION TITLE & QUESTIONS
+      ========================================================================== */
+   .vis-section-title {
+     font-size: 1.2rem;
+     font-weight: 600;
+     color: var(--ink);
+     margin-bottom: 6px;
+     line-height: 1.35;
+   }
+   
+   .vis-section-questions {
+     font-size: 0.83rem;
+     color: var(--ink-muted);
+     line-height: 1.65;
+     margin-bottom: 14px;
+     padding: 10px 14px;
+     border-left: 3px solid var(--green-light);
+     background: var(--green-pale);
+     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+   }
+   
+   .vis-section-questions strong {
+     color: var(--green-dark);
+     font-weight: 600;
+     display: block;
+     margin-bottom: 4px;
+   }
+   
+   /* Instruction hint text */
+   .vis-instructions {
+     font-size: 0.8rem;
+     color: var(--ink-soft);
+     font-style: italic;
+     margin-bottom: 8px;
+   }
+   
+   /* ==========================================================================
+      SHARED: REFLECTION BOX
+      ========================================================================== */
+   .reflection {
+     width: 95%;
+     max-width: 860px;
+     margin: 24px auto 52px;
+     background: var(--reflection-bg);
+     border-radius: var(--radius);
+     padding: 3rem;
+     border: 1px solid var(--border-strong);
+     box-shadow: var(--shadow-sm);
+   }
+   
+   .reflection h3 {
+     font-family: var(--font-mono);
+     font-size: 0.68rem;
+     font-weight: 500;
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     color: var(--green-dark);
+     margin-bottom: 12px;
+   }
+   
+   .reflection p {
+     font-size: 0.9rem;
+     line-height: 1.8;
+     color: var(--ink-muted);
+   }
+   
+   /* ==========================================================================
+      SHARED: ALL VIS WRAPPERS (white card with top accent)
+      ========================================================================== */
+   .vis1-wrapper,
+   .vis2-wrapper,
+   .vis3-wrapper,
+   .vis4-wrapper,
+   .vis5-wrapper,
+   .vis6-wrapper,
+   .vis7-wrapper,
+   .vis8-wrapper,
+   .vis9-wrapper {
+     width: 95%;
+     max-width: 1100px;
+     background: var(--white);
+     border-radius: var(--radius);
+     padding: 36px 32px;
+     box-shadow: var(--shadow-md);
+     border: 1px solid var(--border);
+     border-top: 3px solid var(--green-light);
+     display: flex;
+     flex-direction: column;
+     position: relative;
+   }
+   
+   /* ==========================================================================
+      SHARED: STICKY AXIS LABELS
+      ========================================================================== */
+   .vis1-x-label, .vis1-y-label,
+   .vis3-x-label, .vis3-y-label, .vis3-scale-title,
+   .vis5-x-label, .vis5-y-label,
+   .vis8-x-label, .vis8-y-label {
+     font-family: var(--font-mono);
+     font-size: 0.7rem;
+     font-weight: 500;
+     color: var(--green-dark);
+     background: var(--white);
+     padding: 3px 9px;
+     border-radius: 4px;
+     border: 1px solid var(--border);
+     position: absolute;
+     z-index: 20;
+     letter-spacing: 0.04em;
+   }
+   
+   /* ==========================================================================
+      SHARED: SCROLL AREAS
+      ========================================================================== */
+   .vis1-scroll,
+   .vis3-scroll,
+   .vis5-scroll,
+   .vis8-scroll {
+     overflow: auto;
+     cursor: grab;
+     scrollbar-width: none;
+     -ms-overflow-style: none;
+   }
+   
+   .vis1-scroll::-webkit-scrollbar,
+   .vis3-scroll::-webkit-scrollbar,
+   .vis5-scroll::-webkit-scrollbar,
+   .vis8-scroll::-webkit-scrollbar { display: none; }
+   
+   /* ==========================================================================
+      VIS SECTION CONTAINERS
+      ========================================================================== */
+   #vis1-section, #vis2-section, #vis3-section,
+   #vis4-section, #vis5-section, #vis6-section,
+   #vis7-section, #vis8-section, #vis9-section {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     padding-top: 48px;
+   }
+   
+   /* ==========================================================================
+      VISUALIZATION 1: Bubble Matrix
+      ========================================================================== */
+   .vis1-body {
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     gap: 32px;
+     margin-top: 8px;
+   }
+   
+   .vis1-area {
+     position: relative;
+     flex: 1;
+     min-width: 0;
+   }
+   
+   .vis1-scroll {
+     margin-top: 44px;
+     height: 520px;
+     overflow-x: auto;
+     overflow-y: hidden;
+   }
+   
+   #vis1 { min-width: 1200px; }
+   
+   .vis1-x-label { top: 14px; left: 50%; transform: translateX(-50%); }
+   .vis1-y-label {
+     left: -18px;
+     top: 40%;
+     transform: translateY(-50%) rotate(-90deg);
+     transform-origin: center;
+   }
+   
+   .vis1-summary-box {
+     width: 190px;
+     flex-shrink: 0;
+     background: var(--green-pale);
+     border-radius: var(--radius-sm);
+     padding: 20px;
+     border: 1px solid var(--border-strong);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap: 10px;
+     align-self: center;
+   }
+   
+   .vis1-summary-box h4 {
+     font-family: var(--font-mono);
+     font-size: 0.68rem;
+     font-weight: 500;
+     text-transform: uppercase;
+     letter-spacing: 0.1em;
+     color: var(--green-dark);
+   }
+   
+   .vis1-sales-number {
+     font-family: var(--font-mono);
+     font-size: 1.9rem;
+     font-weight: 500;
+     color: var(--green-dark);
+     line-height: 1;
+   }
+   
+   .vis1-legend-hint {
+     font-size: 0.73rem;
+     color: var(--ink-soft);
+     line-height: 1.5;
+   }
+   
+   /* ==========================================================================
+      VISUALIZATION 2: Donut Charts
+      ========================================================================== */
+   #vis2 {
+     margin-top: 24px;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+   }
+   
+   /* ==========================================================================
+      VISUALIZATION 3: Area Chart
+      ========================================================================== */
+   .vis3-scroll {
+     margin-top: 24px;
+     height: 520px;
+     overflow-x: auto;
+     overflow-y: auto;
+     cursor: grab;
+   }
+   
+   #vis3 { min-width: 1200px; min-height: 800px; }
+   
+   .vis3-x-label    { top: 52px; left: 50%; transform: translateX(-50%); }
+   .vis3-scale-title { top: 148px; left: 8px; }
+   .vis3-y-label    {
+     top: 220px;
+     left: 8px;
+     writing-mode: vertical-rl;
+     transform: rotate(180deg);
+   }
+   
+   /* ==========================================================================
+      VISUALIZATION 4: Grouped Bar
+      ========================================================================== */
+   #vis4 { margin-top: 20px; display: flex; justify-content: center; }
+   
+   /* ==========================================================================
+      VISUALIZATION 5: Multi-row Line Chart
+      ========================================================================== */
+   .vis5-scroll {
+     margin-top: 44px;
+     height: 520px;
+     overflow: auto;
+   }
+   
+   #vis5 { min-width: 1200px; min-height: 1000px; }
+   
+   .vis5-x-label { top: 46px; left: 50%; transform: translateX(-50%); }
+   .vis5-y-label { top: 50%; left: 8px; transform: translateY(-50%) rotate(-90deg); }
+   
+   /* ==========================================================================
+      VISUALIZATION 6: Dependency Heatmap
+      ========================================================================== */
+   #vis6 { margin-top: 24px; width: 100%; display: flex; justify-content: center; }
+   
+   /* ==========================================================================
+      VISUALIZATION 7: East-West Scatter
+      ========================================================================== */
+   #vis7 { margin-top: 24px; width: 100%; display: flex; justify-content: center; }
+   
+   /* ==========================================================================
+      VISUALIZATION 8: NA vs JP Scatterplot
+      ========================================================================== */
+   .vis8-scroll {
+     margin-top: 44px;
+     height: 520px;
+     overflow: auto;
+   }
+   
+   #vis8 { min-width: 1200px; min-height: 560px; }
+   
+   .vis8-x-label { bottom: 16px; left: 50%; transform: translateX(-50%); }
+   .vis8-y-label { top: 50%; left: 8px; transform: translateY(-50%) rotate(-90deg); }
+   
+   /* ==========================================================================
+      VISUALIZATION 9: Divergence Heatmap
+      ========================================================================== */
+   #vis9 { margin-top: 20px; display: flex; justify-content: center; }
+
+
+   /* ==========================================================================
+   VEGA-TOOLTIP — float above sticky header and all overflow containers
+   ========================================================================== */
+   .vg-tooltip {
+    z-index: 9999 !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.8rem !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+  
+  .vg-tooltip td.key {
+    color: var(--green-dark) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.72rem !important;
+  }
+   
+   /* ==========================================================================
+      FOOTER
+      ========================================================================== */
+   .footer {
+     background: var(--green-ink);
+     color: white;
+     padding: 2.5rem 1rem;
+     margin-top: 72px;
+     border-top: 3px solid var(--green-mid);
+   }
+   
+   .footer-content {
+     max-width: 56rem;
+     margin: 0 auto;
+     text-align: center;
+   }
+   
+   .footer-links {
+     display: flex;
+     justify-content: center;
+     gap: 1.5rem;
+     margin-bottom: 1rem;
+   }
+   
+   .footer-links a img {
+     width: 28px;
+     height: 24px;
+     opacity: 0.65;
+     filter: brightness(0) invert(1);
+     transition: opacity 0.2s ease, transform 0.2s ease;
+   }
+   
+   .footer-links a:hover img {
+     opacity: 1;
+     transform: translateY(-3px);
+   }
+   
+   .footer-copy {
+     font-family: var(--font-mono);
+     font-size: 0.73rem;
+     color: rgba(255,255,255,0.4);
+     letter-spacing: 0.05em;
+   }
+   
+   /* ==========================================================================
+      RESPONSIVE — 1200px
+      ========================================================================== */
+   @media screen and (max-width: 1200px) {
+     .vis1-body {
+       flex-direction: column;
+       align-items: stretch;
+     }
+   
+     .vis1-summary-box {
+       width: 100%;
+       flex-direction: row;
+       align-items: center;
+       gap: 24px;
+       align-self: auto;
+     }
+   
+     .vis1-sales-number { font-size: 1.5rem; }
+   }
+   
+   /* ==========================================================================
+      RESPONSIVE — 768px
+      ========================================================================== */
+   @media screen and (max-width: 768px) {
+     .header { gap: 2rem; padding: 1rem 1.25rem; }
+     .header nav a { font-size: 0.78rem; }
+   
+     .analysis-section { padding: 28px 10px 24px; }
+     .insight-card { padding: 16px 18px; }
+     .insight-card h3 { font-size: 0.85rem; }
+   
+     .reflection { padding: 2rem; }
+   
+     .vis1-wrapper, .vis2-wrapper, .vis3-wrapper,
+     .vis4-wrapper, .vis5-wrapper, .vis6-wrapper,
+     .vis7-wrapper, .vis8-wrapper, .vis9-wrapper {
+       padding: 24px 18px;
+     }
+   
+     .vis1-scroll, .vis3-scroll, .vis5-scroll, .vis8-scroll { height: 400px; }
+   }
+   
+   /* ==========================================================================
+      RESPONSIVE — 640px
+      ========================================================================== */
+   @media screen and (max-width: 640px) {
+     .header { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+   
+     .analysis-section { padding: 20px 8px 16px; }
+   
+     .vis1-wrapper, .vis2-wrapper, .vis3-wrapper,
+     .vis4-wrapper, .vis5-wrapper, .vis6-wrapper,
+     .vis7-wrapper, .vis8-wrapper, .vis9-wrapper {
+       padding: 18px 12px;
+       width: 100%;
+       border-radius: 0;
+     }
+   
+     .vis-label-box { font-size: 0.72rem; }
+     .vis-section-title { font-size: 1rem; }
+   
+     .reflection {
+       width: 100%;
+       border-radius: 0;
+       padding: 1.5rem 1rem;
+       margin-left: 0;
+       margin-right: 0;
+     }
+   
+     .vis1-scroll, .vis3-scroll, .vis5-scroll, .vis8-scroll { height: 340px; }
+   
+     .vis1-y-label, .vis5-y-label, .vis8-y-label { display: none; }
+   
+     .vis1-summary-box { flex-direction: column; gap: 6px; }
+     .vis1-sales-number { font-size: 1.3rem; }
+   }
+   
+   /* ==========================================================================
+      RESPONSIVE — 320px
+      ========================================================================== */
+   @media screen and (max-width: 320px) {
+     .header { padding: 0.6rem 0.75rem; gap: 0.4rem; }
+     .header nav a { font-size: 0.68rem; }
+   
+     .vis-label-box { font-size: 0.65rem; padding: 4px 8px; }
+   
+     .reflection { padding: 0.9rem 0.75rem; }
+     .reflection p { font-size: 0.8rem; }
+   
+     .vis1-scroll, .vis3-scroll, .vis5-scroll, .vis8-scroll { height: 270px; }
+     .vis1-sales-number { font-size: 1.1rem; }
+   
+     .vis1-wrapper, .vis2-wrapper, .vis3-wrapper,
+     .vis4-wrapper, .vis5-wrapper, .vis6-wrapper,
+     .vis7-wrapper, .vis8-wrapper, .vis9-wrapper {
+       padding: 12px 8px;
+     }
+   }
