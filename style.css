@@ -1,304 +1,331 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-}
-
-body {
-  background: #f4f6f8;
-  color: #111;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  gap: 6.25rem;
-  padding: 1.25rem 3.125rem;
-  background: #3f8efc;
-  color: white;
-}
-
-.header a {
-  color: white;
-  text-decoration: none;
-}
-
-.hero {
-  padding: 5rem 2rem;
-  position: relative;
-  overflow: hidden;
-  background: #fff;
-}
-
-/* Hero cards */
-.hero-cards {
-  display: flex;
-  gap: 1.25rem;
-  justify-content: center;
-  margin-bottom: 3rem;
-  flex-wrap: wrap; 
-}
-
-.hero-card {
-  width: 8.75rem; 
-  padding: 1rem;
-  border-radius: 1.5rem;
-  text-align: center;
-  transform: rotate(-3deg);
-}
-
-/* Card rotations/colors */
-.pink {
-  background: #f6b3d0;
-}
-.purple {
-  background: #c7b6ff;
-  transform: rotate(2deg);
-}
-.green {
-  background: #cbe97a;
-  transform: rotate(-2deg);
-}
-.orange {
-  background: #f3b57a;
-  transform: rotate(3deg);
-}
-
-.hero-content.two-col {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 3rem;
-  align-items: center;
-  max-width: 50rem;
-  margin: 0 auto;
-}
-
-/* Existing mobile stack for content */
-@media (max-width: 48rem) {
-  .hero-content.two-col {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 1.5rem;
+/* ============================================================
+   GLOBAL RESET & BASE
+   ============================================================ */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
   }
-}
-
-@media (max-width: 23.4375rem) {
+  
+  body {
+    background: #f4f6f8;
+    color: #111;
+  }
+  
+  
+  /* ============================================================
+     SECTION: HEADER
+     ============================================================ */
+  .header {
+    display: flex;
+    justify-content: center;
+    gap: 6.25rem;
+    padding: 1.25rem 3.125rem;
+    background: #a3dba3;
+    color: white;
+  }
+  
+  .header a {
+    color: rgb(37, 37, 37);
+    text-decoration: none;
+  }
+  
+  /* Header responsive */
+  @media (max-width: 48rem) {
+    .header {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+  
+  
+  /* ============================================================
+     SECTION: HERO
+     ============================================================ */
+  .hero {
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+  
+  /* Hero cards row */
   .hero-cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem; 
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
   }
-
+  
   .hero-card {
-    width: 8.75rem; 
-    margin: 0 auto; 
+    width: 8.75rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    text-align: center;
+    transform: rotate(-3deg);
   }
-
+  
+  /* Individual card colors and rotations */
+  .hero-card.pink   { background: #f6b3d0; transform: rotate(-3deg); }
+  .hero-card.purple { background: #c7b6ff; transform: rotate(2deg); }
+  .hero-card.green  { background: #cbe97a; transform: rotate(-2deg); }
+  .hero-card.orange { background: #f3b57a; transform: rotate(3deg); }
+  
+  /* Hero two-column layout (brand + description) */
   .hero-content.two-col {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 1rem;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
     align-items: center;
+    max-width: 50rem;
+    margin: 0 auto;
   }
-
-  .brand {
-    font-size: clamp(1rem, 6vw, 3rem); 
-    font-weight: 800;
-    white-space: normal; 
-    text-align: center; 
-    word-break: break-word; 
+  
+  .hero-content.two-col h1.brand {
+    text-align: left;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin: 0;
   }
-
+  
   .hero .description {
-    font-size: clamp(0.85rem, 3.5vw, 1rem);
-    line-height: 1.4;
-    text-align: center;
+    /* description text inside the hero */
   }
-}
-
-@media (max-width: 28rem) { 
-  .hero-content.two-col {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  
+  /* Hero responsive: tablet */
+  @media (max-width: 48rem) {
+    .hero {
+      margin: 1rem;
+      padding: 2rem;
+    }
+  
+    .hero-card {
+      width: 7.5rem;
+    }
+  
+    .hero-content.two-col {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  
+    .hero-content.two-col h1.brand {
+      text-align: center;
+    }
   }
-}
-
-/* Buttons */
-.btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 62.4375rem;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.primary {
-  background: #3f8efc;
-  color: white;
-}
-
-.secondary {
-  border: 0.125rem solid #3f8efc;
-  color: #3f8efc;
-}
-
-/* Responsive */
-@media (max-width: 48rem) {
-  .hero-card {
-    width: 7.5rem;
+  
+  /* Hero responsive: small mobile */
+  @media (max-width: 28rem) {
+    .hero-content.two-col {
+      gap: 0.75rem;
+    }
   }
-}
-
-/* Education + Skills */
+  
+  /* Hero responsive: very small mobile */
+  @media (max-width: 23.4375rem) {
+    .hero-cards {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .hero-card {
+      width: 8.75rem;
+      margin: 0 auto;
+    }
+  
+    .hero-content.two-col {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0 1rem;
+      align-items: center;
+    }
+  
+    .hero-content.two-col h1.brand {
+      font-size: clamp(1rem, 6vw, 3rem);
+      font-weight: 800;
+      white-space: normal;
+      text-align: center;
+      word-break: break-word;
+    }
+  
+    .hero .description {
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      line-height: 1.4;
+      text-align: center;
+    }
+  }
+  
+  
+  /* ============================================================
+     SECTION: EDUCATION & SKILLS
+     ============================================================ */
+  
+/* Two-column wrapper */
 .edu-skills {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  justify-items: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; 
+  justify-content: center; 
+  gap: 2rem; 
 }
 
-/* Mobile: stack */
-@media (max-width: 48rem) {
-  .edu-skills {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-}
-
-/* Sections */
-.section {
+/* Shared section padding for both columns */
+.edu-section,
+.skills-section {
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
 }
 
-@media (max-width: 26.5625rem) {
-  .section {
-    padding: 1.5rem 1rem;
-  }
-}
-
-@media (max-width: 20rem) {
-  .section {
-    padding: 1rem 0.75rem;
-  }
-}
-
-.section.blue {
-  background-color: #ffffff;
-  align-items: center;
-}
-
-.section h2 {
+.edu-section h2,
+.skills-section h2 {
   margin-bottom: 1.5rem;
 }
 
-/* Cards */
-.card-grid {
+/* Education card */
+.edu-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 1rem;
-  width: 100%;
-  max-width: 100%;
+  grid-template-columns: 1fr;
+  gap: 0.5rem; 
+  align-self: start; 
 }
 
-.card {
+.edu-card {
   background: white;
   color: #111;
   padding: 1.5rem;
   border-radius: 1.25rem;
 }
 
-/* Resume experience card */
-.experience-card {
+/* Skills card grid */
+.skills-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.25rem; 
+}
+
+@media (min-width: 71.8125rem) {
+  .skills-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-card {
   background: white;
+  color: #111;
+  padding: 1.5rem;
   border-radius: 1.25rem;
-  padding: 2rem;
-  max-width: 43.75rem;
-  width: 100%;
-  box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
 
-.experience-item h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
+/* Edu/Skills responsive: stack on mobile */
+@media (max-width: 48rem) {
+  .edu-skills {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .edu-section,
+  .skills-section {
+    padding: 1rem;
+    width: 100%;       
+    align-items: center; 
+  }
+
+  .edu-card-grid,
+  .skills-card-grid {
+    width: 100%;      
+  }
 }
 
-.experience-meta {
-  font-size: 0.85rem;
-  color: #666;
-  display: block;
-  margin-bottom: 0.5rem;
+@media (max-width: 26.5625rem) {
+  .edu-section,
+  .skills-section {
+    padding: 1.5rem 1rem;
+  }
 }
 
-.experience-item p {
-  font-size: 0.95rem;
-  line-height: 1.5;
+@media (max-width: 20rem) {
+  .edu-section,
+  .skills-section {
+    padding: 1rem 0.75rem;
+  }
 }
-
-.viz-wrapper {
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.viz-wrapper svg {
-  width: 100%;
-  max-width: 600px; 
-  height: auto;    
-}
-
-.viz-wrapper p {
-  text-align: center;
-  max-width: 90%; 
-  margin-bottom: 1rem;
-  font-size: clamp(0.8rem, 3.5vw, 1rem); 
-  line-height: 1.4;
-}
-
-h1 {
-  text-align: center;
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  margin: 2rem 1rem;
-}
-
-@media (max-width: 27.625rem) { 
-  .viz-wrapper {
-    padding: 0.5rem;
+  
+  /* ============================================================
+     SECTION: EXPERIENCE
+     — Edit only this block to change the Experience section:
+       the white experience-card and each experience-item inside it.
+     ============================================================ */
+  .experience-section {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 100%;
   }
   
-  .viz-wrapper svg {
-    max-width: 95%; 
+  .experience-section h2 {
+    margin-bottom: 1.5rem;
   }
-}
-
-@media (max-width: 20rem) { 
-  .viz-wrapper svg {
-    max-width: 100%; 
+  
+  /* Outer card container */
+  .experience-card {
+    background: white;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    max-width: 43.75rem;
+    width: 100%;
+    box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
-
-  .viz-wrapper p {
-    font-size: 0.8rem;
+  
+  /* Individual experience entries */
+  .experience-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
   }
-}
-
-p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Image Grid */
+  
+  .experience-meta {
+    font-size: 0.85rem;
+    color: #666;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .experience-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Experience responsive */
+  @media (max-width: 48rem) {
+    .experience-section {
+      margin: 1rem;
+    }
+  }
+  
+  @media (max-width: 26.5625rem) {
+    .experience-section {
+      padding: 1.5rem 1rem;
+    }
+  }
+  
+  @media (max-width: 20rem) {
+    .experience-section {
+      padding: 1rem 0.75rem;
+    }
+  }
+  
+  
+  /* ============================================================
+     SECTION: MY WORK
+    ============================================================ */
 .mywork {
   padding: 3rem 2rem;
   display: flex;
@@ -308,28 +335,25 @@ p {
 
 .mywork h2 {
   padding-bottom: 1.25rem;
-  padding-left: 3.125rem;
+  padding-left: 1.25rem; 
+  text-align: left;
 }
 
+@media (max-width: 48rem) {
+  .mywork h2 {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+/* Grid of project cards */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
   gap: 1.5rem;
 }
 
-/* Scroll reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(3rem);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Card container */
+/* Individual project card */
 .image-card {
   background: white;
   border-radius: 1.25rem;
@@ -339,15 +363,19 @@ p {
   flex-direction: column;
   max-width: 25rem;
   margin: 0 auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Image on top */
+.image-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
 .image-card img {
   width: 100%;
   display: block;
 }
 
-/* Text below */
 .image-card-text {
   padding: 1rem;
 }
@@ -362,65 +390,126 @@ p {
   color: #555;
 }
 
-.image-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.reveal {
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.image-card:hover {
-  transform: translateY(-0.25rem);
-  box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.12);
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-/* Footer */
-.footer {
-  background: #3f8efc;
-  color: white;
-  padding: 2rem 1rem;
-  margin-top: auto;
-}
-
-.footer-content {
-  max-width: 56.25rem;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.footer-links a img {
-  width: 2.1875rem;
-  height: 1.875rem;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.footer-links a:hover img {
-  transform: translateY(-0.125rem);
-  opacity: 0.8;
-}
-
-.footer-copy {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-/* Responsive */
-@media (max-width: 48rem) {
-  .hero {
-    margin: 1rem;
-    padding: 2rem;
+  /* ============================================================
+     SECTION: FOOTER
+     ============================================================ */
+  .footer {
+    background: #a3dba3;
+    color: rgb(37, 37, 37);
+    padding: 2rem 1rem;
+    margin-top: auto;
   }
-
-  .section.blue {
-    margin: 1rem;
+  
+  .footer-content {
+    max-width: 56.25rem;
+    margin: 0 auto;
+    text-align: center;
   }
-
-  .header {
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-links a img {
+    width: 2.1875rem;
+    height: 1.875rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .footer-links a:hover img {
+    transform: translateY(-0.125rem);
+    opacity: 0.8;
+  }
+  
+  .footer-copy {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  
+  /* ============================================================
+     VISUALIZATIONS
+================================== */
+  .viz-wrapper {
+    display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
-}
+  
+  .viz-wrapper svg {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+  
+  .viz-wrapper p {
+    text-align: center;
+    max-width: 90%;
+    margin-bottom: 1rem;
+    font-size: clamp(0.8rem, 3.5vw, 1rem);
+    line-height: 1.4;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin: 2rem 1rem;
+  }
+  
+  @media (max-width: 27.625rem) {
+    .viz-wrapper {
+      padding: 0.5rem;
+    }
+  
+    .viz-wrapper svg {
+      max-width: 95%;
+    }
+  }
+  
+  @media (max-width: 20rem) {
+    .viz-wrapper svg {
+      max-width: 100%;
+    }
+  
+    .viz-wrapper p {
+      font-size: 0.8rem;
+    }
+  }
+  
+  
+  /* ============================================================
+     SHARED BUTTON STYLES
+     ============================================================ */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 62.4375rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .btn.primary {
+    background: #3f8efc;
+    color: white;
+  }
+  
+  .btn.secondary {
+    border: 0.125rem solid #3f8efc;
+    color: #3f8efc;
+  }

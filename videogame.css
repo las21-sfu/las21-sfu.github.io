@@ -1,119 +1,216 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  gap: 6.25rem;
-  padding: 1.25rem 3.125rem;
-  background: #3f8efc;
-  color: white;
-}
-.header a {
-  color: white;
-  text-decoration: none;
-
-} /* Page Background */
-body {
-  background: #f4f6f8;
-  color: #111;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-hr {
-  border: none; /* Removes the default border */
-  height: 3px; /* Sets the thickness of the line */
-  background-color: #333; /* Changes the line color */
-  width: 90%; /* Sets the width to 50% of the container */
-  margin: 20px auto; /* Centers the line with top/bottom spacing */
-}
-
- /* Main Layout Container */
- .container {
-    flex: 1;
+/* ==========================================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+   *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --font-main: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+    --color-header-bg: #a3dba3;
+    --color-page-bg: #f4f6f8;
+    --color-white: #ffffff;
+    --color-text: #111111;
+    --color-label-bg: #e0e0e0;
+    --color-border-accent: #004085;
+    --color-blue: #3f8efc;
+    --color-footer-bg: #a3dba3;;
+    --color-reflection-bg: #f5fff8;
+    --shadow-card: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    --shadow-subtle: 0px 6px 18px rgba(0, 0, 0, 0.08);
+    --radius-card: 10px;
+    --radius-label: 10px;
+  }
+  
+  html {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background: var(--color-page-bg);
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ==========================================================================
+     HR DIVIDER
+     ========================================================================== */
+  hr {
+    border: none;
+    height: 3px;
+    background-color: #333;
+    width: 90%;
+    margin: 20px auto;
+  }
+  
+  /* ==========================================================================
+     HEADER
+     ========================================================================== */
+  .header {
+    display: flex;
+    justify-content: center;
+    gap: 6.25rem;
+    padding: 1.25rem 3.125rem;
+    background: var(--color-header-bg);
+    color: white;
+  }
+  
+  .header a {
+    color: rgb(37, 37, 37);
+    text-decoration: none;
+  }
+  
+  /* ==========================================================================
+     INSIGHT / ANALYSIS CARDS (top section)
+     ========================================================================== */
+  .analysis-section {
+    padding: 20px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px 0;
+    background-color: #f8f9fa;
   }
-  .vis-wrapper {
+  
+  .insight-card {
+    width: 95%;
+    max-width: 1100px;
+    margin: 20px auto;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    padding: 30px;
+    border-left: 6px solid var(--color-border-accent);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-sizing: border-box;
+  }
+  
+  .insight-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .insight-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .insight-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* ==========================================================================
+     SHARED: LABEL BOX (title pill for all visualizations)
+     ========================================================================== */
+  .vis-label-box {
+    background-color: var(--color-label-bg);
+    padding: 8px 16px;
+    border-radius: var(--radius-label);
+    font-size: 20px;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  /* ==========================================================================
+     SHARED: REFLECTION SECTION
+     ========================================================================== */
+  .reflection {
+    width: 95%;
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: var(--color-reflection-bg);
+    border-radius: 10px;
+    padding: 3rem;
+    text-align: left;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+    box-shadow: var(--shadow-subtle);
+  }
+  
+  .reflection h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  /* ==========================================================================
+     SHARED: DRAG-SCROLL UTILITY (used inside scroll areas)
+     ========================================================================== */
+  .drag-scroll {
+    overflow: auto;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .drag-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .drag-scroll:active {
+    cursor: grabbing;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 1: Global Sales by Genre and Platform (Bubble Matrix)
+     ========================================================================== */
+  #vis1-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 0 0;
+  }
+  
+  .vis1-wrapper {
     position: relative;
     width: 1100px;
-    background-color: white;
+    background-color: var(--color-white);
     padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
   }
-  .vis-and-summary {
+  
+  .vis1-body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 40px;
   }
   
-  /* Visualization Area */
-  .vis-area {
+  .vis1-area {
     position: relative;
     width: 800px;
   }
   
-  .vis-scroll {
-    margin-top: 50px;   
-    position: relative;
+  .vis1-scroll {
+    margin-top: 50px;
     width: 100%;
     height: 550px;
     overflow-x: auto;
     overflow-y: hidden;
     cursor: grab;
-  
-    /* Hide scrollbar */
-    scrollbar-width: none;      /* Firefox */
-    -ms-overflow-style: none;   /* IE */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
   
-  .vis-scroll::-webkit-scrollbar {
-    display: none;              /* Chrome/Safari */
-  }  
-  
-  #vis {
-    min-width: 1200px;   
-  }
-  /* Summary Box */
-.summary-box {
-    width: 200px;
-    height: 200px;
-    background: #f7f9fc;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .vis1-scroll::-webkit-scrollbar {
+    display: none;
   }
   
-  .summary-box h4 {
-    font-size: 16px;
-    margin-bottom: 15px;
+  #vis1 {
+    min-width: 1200px;
   }
   
-  .sales-number {
-    font-size: 28px;
-    font-weight: bold;
-    color: #3f8efc;
-    margin-bottom: 20px;
-  }
-
-  .sticky-x-label {
+  /* Sticky axis labels for vis1 */
+  .vis1-x-label {
     position: absolute;
-    top: 20px;                 
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold;
@@ -124,9 +221,9 @@ hr {
     z-index: 20;
   }
   
-  .sticky-y-label {
+  .vis1-y-label {
     position: absolute;
-    left:-20px;               
+    left: -20px;
     top: 40%;
     transform: translateY(-50%) rotate(-90deg);
     transform-origin: center;
@@ -138,89 +235,108 @@ hr {
     z-index: 20;
   }
   
-    
-  /* Vega Visualization Area */
-#vis {
-  margin-bottom: 15px;
-} 
-
-/* Grey Label Box */
-
-.label-box {
-  background-color: #e0e0e0;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-size: 20px;
-  color: #333;
-  display: inline-block;
-}
-
-.vis-wrapper p {
-    font-size: 20px;
-    padding: 8px 16px;
-} 
-
-/* Reflection Section */
-.reflection {
-    width: 100%;
-    max-width: 1100px; 
-    margin: 30px auto 60px auto;  
-    text-align: left;
-    font-size: 15px;
-    color: #333;
-    line-height: 1.6;
+  /* Summary box beside vis1 */
+  .vis1-summary-box {
+    width: 200px;
+    height: 200px;
+    background: #f7f9fc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
   }
   
-  .reflection h3 {
-    margin-bottom: 10px;
+  .vis1-summary-box h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
   }
-
-/* MAIN CONTAINER */
-.vis2-container {
+  
+  .vis1-sales-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-blue);
+    margin-bottom: 20px;
+  }
+  
+  .vis1-legend-hint {
+    font-size: 13px;
+    color: #555;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 2: Console "Genre Personalities" (Radial Donuts)
+     ========================================================================== */
+  #vis2-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+  }
+  
+  .vis2-wrapper {
+    width: 1100px;
+    background-color: var(--color-white);
+    padding: 40px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #vis2 {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 3: Regional Sales vs. Platform — Area Chart (by Genre + Year)
+     ========================================================================== */
+  #vis3-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 60px 0;
   }
   
-/* Update White Wrapper to match Vis 1 dimensions and padding */
-.vis2-wrapper {
+  .vis3-wrapper {
     position: relative;
-    width: 1100px; /* Same width as .vis-wrapper */
-    background-color: white;
-    padding: 40px 30px; /* Same padding as .vis-wrapper */
-    border-radius: 10px;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    width: 1100px;
+    background-color: var(--color-white);
+    padding: 40px 30px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
-    overflow: hidden; 
-    /* Height is removed or set to 'auto' to match Vis 1's content-driven height */
+    overflow: hidden;
   }
   
-  /* DRAG SCROLL AREA */
-  .vis2-scroll {
-    margin-top: 20px; /* Adjust based on label density */
+  .vis3-scroll {
+    margin-top: 20px;
     width: 100%;
-    height: 550px; /* Match Vis 1's height if consistency is required */
+    height: 550px;
     overflow-x: auto;
     overflow-y: hidden;
     cursor: grab;
-  
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
   
-  .vis2-scroll::-webkit-scrollbar {
+  .vis3-scroll::-webkit-scrollbar {
     display: none;
   }
   
-  #vis2 {
+  #vis3 {
     min-width: 1200px;
     min-height: 800px;
   }
   
-  /* STICKY AXIS LABELS */
-  .sticky-x-label-2 {
+  .vis3-x-label {
     position: absolute;
     top: 20px;
     left: 50%;
@@ -232,181 +348,61 @@ hr {
     z-index: 10;
   }
   
-  .sticky-y-label-2 {
+  .vis3-y-label {
     position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    font-weight: bold;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-
-  .sticky-y-scale-title {
-    position: absolute;
-    left: 20px;
-    top: -2px;
-    font-weight: bold;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-
-  /* Move the horizontal labels (Global Sales and Year) down */
-.sticky-y-scale-title, 
-.sticky-x-label-2 {
-    position: absolute;
-    top: 150px; /* Increase this value to move them further down */
-    z-index: 10;
-}
-
-/* Adjust the specific horizontal placement if needed */
-.sticky-y-scale-title {
     left: 10px;
-}
-
-.sticky-x-label-2 {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Move the "Genres" label down to align with the first chart row */
-.sticky-y-label-2 {
-    position: absolute;
-    top: 220px; /* Increase this value to move it down the left side */
-    left: 10px;
-    writing-mode: vertical-rl; /* Keeps it vertical as seen in the image */
+    top: 220px;
+    writing-mode: vertical-rl;
     transform: rotate(180deg);
+    font-weight: bold;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
     z-index: 10;
-}
-
-/* Update the Grey Label Box for Vis 2 to match Vis 1 */
-.label-box-2 {
-    background-color: #e0e0e0;
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 20px;
-    display: inline-block; /* Matches Vis 1's "pill" look */
-    margin-bottom: 10px;
   }
-
-  /* Instructions Styling */
-.vis2-wrapper p {
-    font-size: 20px;
-    padding: 8px 16px;
-    margin: 0; /* Reset margins to control spacing from the top */
+  
+  .vis3-scale-title {
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    font-weight: bold;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
   }
-
-  /* VISUALIZATION 3 STYLES */
-
-/* MAIN CONTAINER */
-.vis3-container {
+  
+  /* ==========================================================================
+     VISUALIZATION 4: Regional Market Composition — Grouped Bar (PS4 vs competitors)
+     ========================================================================== */
+  #vis4-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 60px 0;
+    width: 100%;
+    margin: 30px 0;
   }
   
-/* White Wrapper matching previous visualizations */
-.vis3-wrapper {
-    position: relative;
+  .vis4-wrapper {
     width: 1100px;
-    background-color: white;
+    background-color: var(--color-white);
     padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
   
-  /* DRAG SCROLL AREA - both horizontal and vertical */
-  .vis3-scroll {
-    margin-top: 40px;
-    width: 100%;
-    height: 550px;
-    overflow: auto;
-    cursor: grab;
-  
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .vis3-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  
-  #vis3 {
-    min-width: 1200px;
-    min-height: 1000px;
-  }
-  
-  /* STICKY AXIS LABELS with 20px gap from visualization */
-  .sticky-x-label-3 {
-    position: absolute;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-  
-  .sticky-y-label-3 {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    font-weight: bold;
-    font-size: 15px;
-    background: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    z-index: 10;
-  }
-
-  /* Grey Label Box for Vis 3 */
-  .label-box-3 {
-    background-color: #e0e0e0;
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 20px;
-    color: #333;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-
-  /* Instructions Styling for Vis 3 */
-  .vis3-wrapper p {
-    font-size: 20px;
-    padding: 8px 16px;
-    margin: 0;
-  }
-
-  .vis4-container {
+  #vis4 {
+    margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the white wrapper horizontally */
-    justify-content: center; /* Centers content vertically if the container has a set height */
-    width: 100%;
-}
-
-#vis4 {
-  display: flex;
-  justify-content: center;
-}
-
-/* =============================================
-   VISUALIZATION 4 STYLES
-   ============================================= */
-
-   .vis5-container {
+    justify-content: center;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 5: Regional Sales by Platform — Multi-row Line Chart
+     ========================================================================== */
+  #vis5-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -416,16 +412,15 @@ hr {
   .vis5-wrapper {
     position: relative;
     width: 1100px;
-    background-color: white;
+    background-color: var(--color-white);
     padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
   
-  /* Drag-scroll area — both axes */
   .vis5-scroll {
     margin-top: 40px;
     width: 100%;
@@ -442,13 +437,12 @@ hr {
   
   #vis5 {
     min-width: 1200px;
-    min-height: 560px;
+    min-height: 1000px;
   }
   
-  /* Sticky x label — bottom-centred, 20px clear of the chart */
-  .sticky-x-label-5 {
+  .vis5-x-label {
     position: absolute;
-    bottom: 20px;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold;
@@ -459,8 +453,7 @@ hr {
     z-index: 10;
   }
   
-  /* Sticky y label — left-centred, rotated, 20px clear of the chart */
-  .sticky-y-label-5 {
+  .vis5-y-label {
     position: absolute;
     left: 20px;
     top: 50%;
@@ -473,90 +466,367 @@ hr {
     z-index: 10;
   }
   
-  /* Grey label box */
-  .label-box-5 {
-    background-color: #e0e0e0;
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 20px;
-    color: #333;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-  
-  /* Instruction text */
-  .vis9-wrapper p {
-    font-size: 20px;
-    padding: 8px 16px;
-    margin: 0;
-  }
-
-.vis-container-creative {
+  /* ==========================================================================
+     VISUALIZATION 6: Proportional Market Dependency — Heatmap
+     ========================================================================== */
+  #vis6-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.vis-container-creative .vis-wrapper {
+  }
+  
+  .vis6-wrapper {
     width: 1100px;
-    background-color: white;
+    background-color: var(--color-white);
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #vis6 {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 7: East-West "Symmetry" Plot
+     ========================================================================== */
+  #vis7-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-}
-
-#vis9, #vis10 {
-    margin-top: 30px;
-}
+    width: 100%;
+    margin-top: 50px;
+  }
   
-  /* Footer */
-.footer {
-  background: #3f8efc;
-  color: white;
-  padding: 2rem 1rem;
-  margin-top: auto;
-}
-.footer-content {
-  max-width: 56.25rem;
-  margin: 0 auto;
-  text-align: center;
-}
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-.footer-links a img {
-  width: 2.1875rem;
-  height: 1.875rem;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.footer-links a:hover img {
-  transform: translateY(-0.125rem);
-  opacity: 0.8;
-}
-.footer-copy {
-  font-size: 0.9rem;
-  opacity: 0.9;
-} /* Responsive */
-@media (max-width: 48rem) {
-  .hero {
-    margin: 1rem;
-    padding: 2rem;
-  }
-  .section.blue {
-    margin: 1rem;
-  }
-  .header {
+  .vis7-wrapper {
+    width: 1100px;
+    background-color: var(--color-white);
+    padding: 40px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
     flex-direction: column;
-    gap: 0.75rem;
   }
-}
+  
+  #vis7 {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 8: Geographic Appeal — NA vs JP Scatterplot
+     ========================================================================== */
+  #vis8-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px 0;
+  }
+  
+  .vis8-wrapper {
+    position: relative;
+    width: 1100px;
+    background-color: var(--color-white);
+    padding: 40px 30px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .vis8-scroll {
+    margin-top: 40px;
+    width: 100%;
+    height: 550px;
+    overflow: auto;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .vis8-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #vis8 {
+    min-width: 1200px;
+    min-height: 560px;
+  }
+  
+  .vis8-x-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 15px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  
+  .vis8-y-label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-weight: bold;
+    font-size: 15px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  
+  /* ==========================================================================
+     VISUALIZATION 9: Regional Divergence Heatmap
+     ========================================================================== */
+  #vis9-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0 60px 0;
+  }
+  
+  .vis9-wrapper {
+    width: 1100px;
+    background-color: var(--color-white);
+    padding: 40px 30px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #vis9 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ==========================================================================
+     FOOTER
+     ========================================================================== */
+  .footer {
+    background: var(--color-footer-bg);
+    color: rgb(37, 37, 37);
+    padding: 2rem 1rem;
+    margin-top: auto;
+  }
+  
+  .footer-content {
+    max-width: 56.25rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-links a img {
+    width: 2.1875rem;
+    height: 1.875rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .footer-links a:hover img {
+    transform: translateY(-0.125rem);
+    opacity: 0.8;
+  }
+  
+  .footer-copy {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  /* ==========================================================================
+     RESPONSIVE — DESKTOP (max 1200px)
+     ========================================================================== */
+  @media screen and (max-width: 1200px) {
+    .vis1-wrapper,
+    .vis2-wrapper,
+    .vis3-wrapper,
+    .vis4-wrapper,
+    .vis5-wrapper,
+    .vis6-wrapper,
+    .vis7-wrapper,
+    .vis8-wrapper,
+    .vis9-wrapper {
+      width: 95%;
+    }
+  
+    .vis1-area {
+      width: 100%;
+    }
+  
+    .vis1-body {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .vis1-summary-box {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+  
+  /* ==========================================================================
+     RESPONSIVE — TABLET / LARGE MOBILE (max 768px)
+     ========================================================================== */
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+      padding: 1rem;
+    }
+  
+    .insight-card {
+      padding: 20px;
+      border-left-width: 4px;
+    }
+  
+    .insight-card h3 {
+      font-size: 1.2rem;
+    }
+  
+    .insight-card p {
+      font-size: 0.9rem;
+    }
+  
+    .vis-label-box {
+      font-size: 16px;
+    }
+  
+    .reflection {
+      padding: 2rem;
+    }
+  
+    .vis1-scroll,
+    .vis3-scroll,
+    .vis5-scroll,
+    .vis8-scroll {
+      height: 400px;
+    }
+  }
+  
+  /* ==========================================================================
+     RESPONSIVE — MOBILE 640px
+     ========================================================================== */
+  @media screen and (max-width: 640px) {
+    .header {
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+    }
+  
+    .insight-card {
+      padding: 15px;
+    }
+  
+    .vis-label-box {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+  
+    .reflection {
+      padding: 1.5rem;
+      font-size: 14px;
+    }
+  
+    .vis1-wrapper,
+    .vis2-wrapper,
+    .vis3-wrapper,
+    .vis4-wrapper,
+    .vis5-wrapper,
+    .vis6-wrapper,
+    .vis7-wrapper,
+    .vis8-wrapper,
+    .vis9-wrapper {
+      width: 100%;
+      border-radius: 0;
+      padding: 20px 15px;
+    }
+  
+    .vis1-scroll,
+    .vis3-scroll,
+    .vis5-scroll,
+    .vis8-scroll {
+      height: 350px;
+    }
+  
+    .vis1-summary-box {
+      width: 100%;
+      height: auto;
+    }
+  
+    .vis1-sales-number {
+      font-size: 22px;
+    }
+  
+    /* Hide rotated axis labels on very small screens — they overlap on mobile */
+    .vis1-y-label,
+    .vis3-y-label,
+    .vis5-y-label,
+    .vis8-y-label {
+      display: none;
+    }
+  }
+  
+  /* ==========================================================================
+     RESPONSIVE — MOBILE 320px
+     ========================================================================== */
+  @media screen and (max-width: 320px) {
+    .header {
+      gap: 0.3rem;
+      padding: 0.5rem;
+      font-size: 13px;
+    }
+  
+    .vis-label-box {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  
+    .reflection {
+      padding: 1rem;
+      font-size: 13px;
+    }
+  
+    .vis1-scroll,
+    .vis3-scroll,
+    .vis5-scroll,
+    .vis8-scroll {
+      height: 280px;
+    }
+  
+    .vis1-sales-number {
+      font-size: 18px;
+    }
+  
+    .insight-card h3 {
+      font-size: 1rem;
+    }
+  
+    .insight-card p {
+      font-size: 0.8rem;
+    }
+  }
