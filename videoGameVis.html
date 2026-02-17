@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video Game Visualizations — Laraine Sim</title>
     <link rel="stylesheet" href="videogame.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vega-tooltip/build/vega-tooltip.css" />
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -13,10 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-tooltip@0.30.0/build/vega-tooltip.min.js"></script>
-
   </head>
   <body>
-
     <!-- =====================================================================
          HEADER
          ===================================================================== -->
@@ -32,178 +29,314 @@
          INSIGHT CARDS (dark hero section)
          ===================================================================== -->
     <section class="analysis-section">
+      <!-- Summary Statistics -->
+      <div class="stats-summary">
+        <h2>Summary Statistics and Key Insights</h2>
+
+        <div class="stats-grid">
+          <div class="stat-group">
+            <h4>Central Tendency (Global Sales)</h4>
+            <ul>
+              <li>
+                <span class="stat-label">Mean:</span>
+                <span class="stat-value">~0.54M</span> units
+              </li>
+              <li>
+                <span class="stat-label">Median:</span>
+                <span class="stat-value">0.17M</span> units
+              </li>
+              <li>
+                <span class="stat-label">Mode:</span>
+                <span class="stat-value">0.02M</span> units
+              </li>
+            </ul>
+            <p class="stat-note">
+              The mean-median gap reveals right-skew: a few blockbusters (e.g.,
+              Wii Sports) dramatically raise the average, while most games sell
+              modest numbers.
+            </p>
+          </div>
+
+          <div class="stat-group">
+            <h4>Spread and Variability</h4>
+            <ul>
+              <li>
+                <span class="stat-label">Min:</span>
+                <span class="stat-value">0.01M</span> units
+              </li>
+              <li>
+                <span class="stat-label">Max:</span>
+                <span class="stat-value">82.74M</span> units
+              </li>
+              <li>
+                <span class="stat-label">Range:</span>
+                <span class="stat-value">~82.73M</span> units
+              </li>
+              <li>
+                <span class="stat-label">Std Dev:</span>
+                <span class="stat-value">~1.56M</span> units
+              </li>
+            </ul>
+            <p class="stat-note">
+              This wide range and high variability highlight the hit-driven
+              nature of the industry, where a few extremely successful games
+              account for a large share of total sales.
+            </p>
+          </div>
+
+          <div class="stat-group">
+            <h4>Categorical Distributions</h4>
+            <div class="stat-subgroup">
+              <h5>Genres</h5>
+              <p>
+                <span class="stat-label">Most frequent:</span>
+                <strong>Action</strong>
+              </p>
+              <p class="stat-note-inline">
+                Other common: Sports, Misc, Role-Playing, Shooter. This suggests
+                <br />
+                that Action games dominate the market in terms of quantity.
+              </p>
+            </div>
+            <div class="stat-subgroup">
+              <h5>Platforms</h5>
+              <p>
+                <span class="stat-label">Most common:</span>
+                <strong>Nintendo DS</strong>
+              </p>
+              <p class="stat-note-inline">
+                Other major: PS2, PS3, Wii, Xbox 360
+              </p>
+            </div>
+            <div class="stat-subgroup">
+              <h5>Publishers</h5>
+              <p>
+                <span class="stat-label">Most frequent:</span>
+                <strong>Electronic Arts</strong>
+              </p>
+              <p class="stat-note-inline">
+                Large publishers appear frequently, indicating industry <br />
+                consolidation and the presence of major studios in global sales
+                data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="insight-card" onclick="toggleInsight(1)">
-        <h3>Insight 1: Variance in Regional Consumer Behavior and Genre Affinity</h3>
+        <h3>Insight 1: Variance in Regional Consumer Behavior and Genres</h3>
         <div class="summary-text" id="insight-1">
-          <p>Analysis of the dataset reveals a geographical disparity in software sales, specifically between 
-            North American and Japanese markets. While North America consistently serves as the primary driver for global sales,
-            the Japanese market exhibits specialized consumption patterns that diverge from Western trends. This is 
-            evident in the performance of specific genres such as Western-developed Shooters and Action titles, which frequently 
-            rely on the North American market. For instance, Duck Hunt recorded 26.93 million units 
-            in North America but only 0.28 million in Japan. Title-level data for Pokemon Red/Blue demonstrates an instance of market symmetry,
-             achieving near-parity with 11.27 million units in North America and 10.22 million in Japan.
-            Furthermore, the "Other Sales" category represents a marginal fraction of total revenue, 
-            indicating that the industry has historically functioned as a duopoly centered on the specific cultural preferences of Western and Japanese markets.</p>
+          <p>
+            Analysis of the dataset reveals a geographical disparity in genre
+            sales, specifically between North American and Japanese markets.
+            While North America consistently serves as the primary driver for
+            global sales, the Japanese market exhibits consumption patterns that
+            diverge from Western trends. This is evident in the performance of
+            specific genres such as Western-developed Shooters and Action
+            titles, which frequently rely on the North American market. For
+            instance, Duck Hunt recorded 26.93 million units in North America
+            but only 0.28 million in Japan. Title-level data for Pokemon
+            Red/Blue demonstrates an instance of market symmetry, achieving
+            near-parity with 11.27 million units in North America and 10.22
+            million in Japan.
+          </p>
         </div>
       </div>
 
       <div class="insight-card" onclick="toggleInsight(2)">
-        <h3>Insight 2: Institutional Market Concentration and First-Party Publisher Specialization</h3>
+        <h3>Insight 2: Market Concentration and Publisher Specialization</h3>
         <div class="summary-text" id="insight-2">
-          <p>Publishers build "Territorial Fortresses." <strong>Microsoft</strong> is NA-reliant (<i>Halo 3</i>), <strong>EA</strong> leverages a European stronghold for <i>FIFA</i> (6.06M EU vs 1.11M NA), while <strong>Nintendo</strong> maintains the most balanced global footprint across all regions. [Source 2, 9]</p>
+          <p>
+            The distribution of sales by publisher illustrates how corporate
+            entities leverage regional advantages to secure market share.
+            Microsoft Game Studios utilizes a strategy which targets the North
+            American consumer, as seen with Halo 3, which sold 7.97 million
+            units in North America compared to 0.13 million in Japan. In
+            contrast, Electronic Arts (EA) is significant in the European market
+            through its sports franchises; for example, FIFA 16 on the PS4 sold
+            6.06 million units in Europe, and in North America, it sold 1.11
+            million units. Nintendo remains an outlier as the only publisher in
+            the dataset that maintains a balanced global revenue stream across
+            all three primary territories. Furthermore, the data also suggests
+            that hardware success is intrinsically linked to these regional
+            publisher strengths; the Xbox 360’s global standing was driven
+            almost entirely by North American demand, while the PC segment in
+            this dataset is predominantly European based, exemplified by the
+            performance of titles like The Sims 3 (6.42M EU vs 0.98M NA) and
+            World of Warcraft (6.21M EU vs 0.07M NA).
+          </p>
         </div>
       </div>
 
       <div class="insight-card" onclick="toggleInsight(3)">
-        <h3>Insight 3: Industry Maturation and the Shift Toward Market Consolidation</h3>
+        <h3>
+          Insight 3: Industry Maturation and the Shift Toward Market
+          Consolidation
+        </h3>
         <div class="summary-text" id="insight-3">
-          <p>Industry evolution shows a shift from the <strong>2000s expansion</strong> (Wii/DS era) to <strong>2010s consolidation</strong>. Modern blockbusters like <i>GTA V</i> (21.40M on PS3) now act as "tentpoles" that subsidize a vast library of lower-selling titles. [Source 1, 8]</p>
+          <p>
+            A longitudinal analysis of release data indicates a transition from
+            an early market to a consolidated economy. The 2000s were
+            characterized by an increase in unit volume and hardware, largely
+            driven by the Wii and DS platforms. This period produced statistical
+            outliers, such as Wii Sports, which sold 82.74 million units.
+            However, as the industry progressed into the 2010s, the data shows a
+            distinct shift toward market consolidation. Global sales volume
+            became increasingly concentrated within a limited number of
+            high-budget franchises, such as Grand Theft Auto V (21.40 million on
+            PS3) and the Call of Duty series, which are frequently re-released
+            across multiple hardware generations to mitigate financial risk.
+            This maturation is empirically supported by the gap between the mean
+            global sales (~0.54M) and the median (0.17M). This skewed
+            distribution confirms that the industry currently relies on
+            high-performing titles to subsidize lower-selling, niche products.
+          </p>
         </div>
       </div>
-
     </section>
     <div class="page-wrapper">
-    <div class="card">
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header">
+          <div class="icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="3" y1="15" x2="21" y2="15" />
+              <line x1="9" y1="9" x2="9" y2="21" />
+            </svg>
+          </div>
+          <div>
+            <h2>Variables and Data Types</h2>
+            <div class="subtitle">Video Game Sales Dataset</div>
+          </div>
+        </div>
 
-      <!-- Header -->
-      <div class="card-header">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <line x1="3" y1="9" x2="21" y2="9"/>
-            <line x1="3" y1="15" x2="21" y2="15"/>
-            <line x1="9" y1="9" x2="9" y2="21"/>
-          </svg>
+        <!-- Table -->
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Description</th>
+                <th>Data Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="var-name">Name</span></td>
+                <td class="desc">Title of the video game</td>
+                <td>
+                  <span class="chip categorical">Categorical</span>
+                  <span class="chip-sub">Nominal</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">Platform</span></td>
+                <td class="desc">Gaming platform (e.g., Wii, NES, DS)</td>
+                <td>
+                  <span class="chip categorical">Categorical</span>
+                  <span class="chip-sub">Nominal</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">Year</span></td>
+                <td class="desc">Year of release</td>
+                <td>
+                  <span class="chip temporal">Numerical</span>
+                  <span class="chip-sub">Discrete / Temporal</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">Genre</span></td>
+                <td class="desc">Game genre (e.g., Action, Sports)</td>
+                <td>
+                  <span class="chip categorical">Categorical</span>
+                  <span class="chip-sub">Nominal</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">Publisher</span></td>
+                <td class="desc">Company that published the game</td>
+                <td>
+                  <span class="chip categorical">Categorical</span>
+                  <span class="chip-sub">Nominal</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">NA_Sales</span></td>
+                <td class="desc">Sales in North America (millions)</td>
+                <td>
+                  <span class="chip numerical">Numerical</span>
+                  <span class="chip-sub">Continuous</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">EU_Sales</span></td>
+                <td class="desc">Sales in Europe (millions)</td>
+                <td>
+                  <span class="chip numerical">Numerical</span>
+                  <span class="chip-sub">Continuous</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">JP_Sales</span></td>
+                <td class="desc">Sales in Japan (millions)</td>
+                <td>
+                  <span class="chip numerical">Numerical</span>
+                  <span class="chip-sub">Continuous</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">Other_Sales</span></td>
+                <td class="desc">Sales in other regions (millions)</td>
+                <td>
+                  <span class="chip numerical">Numerical</span>
+                  <span class="chip-sub">Continuous</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="var-name">Global_Sales</span></td>
+                <td class="desc">Total worldwide sales (millions)</td>
+                <td>
+                  <span class="chip numerical">Numerical</span>
+                  <span class="chip-sub">Continuous</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div>
-          <h2>Variables and Data Types</h2>
-          <div class="subtitle">Video Game Sales Dataset — 10 variables</div>
-        </div>
-      </div>
-  
-      <!-- Table -->
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Variable</th>
-              <th>Description</th>
-              <th>Data Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="var-name">Name</span></td>
-              <td class="desc">Title of the video game</td>
-              <td>
-                <span class="chip categorical">Categorical</span>
-                <span class="chip-sub">Nominal</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">Platform</span></td>
-              <td class="desc">Gaming platform (e.g., Wii, NES, DS)</td>
-              <td>
-                <span class="chip categorical">Categorical</span>
-                <span class="chip-sub">Nominal</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">Year</span></td>
-              <td class="desc">Year of release</td>
-              <td>
-                <span class="chip temporal">Numerical</span>
-                <span class="chip-sub">Discrete / Temporal</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">Genre</span></td>
-              <td class="desc">Game genre (e.g., Action, Sports)</td>
-              <td>
-                <span class="chip categorical">Categorical</span>
-                <span class="chip-sub">Nominal</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">Publisher</span></td>
-              <td class="desc">Company that published the game</td>
-              <td>
-                <span class="chip categorical">Categorical</span>
-                <span class="chip-sub">Nominal</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">NA_Sales</span></td>
-              <td class="desc">Sales in North America (millions)</td>
-              <td>
-                <span class="chip numerical">Numerical</span>
-                <span class="chip-sub">Continuous</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">EU_Sales</span></td>
-              <td class="desc">Sales in Europe (millions)</td>
-              <td>
-                <span class="chip numerical">Numerical</span>
-                <span class="chip-sub">Continuous</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">JP_Sales</span></td>
-              <td class="desc">Sales in Japan (millions)</td>
-              <td>
-                <span class="chip numerical">Numerical</span>
-                <span class="chip-sub">Continuous</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">Other_Sales</span></td>
-              <td class="desc">Sales in other regions (millions)</td>
-              <td>
-                <span class="chip numerical">Numerical</span>
-                <span class="chip-sub">Continuous</span>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="var-name">Global_Sales</span></td>
-              <td class="desc">Total worldwide sales (millions)</td>
-              <td>
-                <span class="chip numerical">Numerical</span>
-                <span class="chip-sub">Continuous</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Legend -->
-      <div class="legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#2e7d32"></div>
-          Categorical (Nominal)
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#1565c0"></div>
-          Numerical (Continuous)
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#e65100"></div>
-          Numerical (Discrete / Temporal)
+
+        <!-- Legend -->
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #2e7d32"></div>
+            Categorical (Nominal)
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #1565c0"></div>
+            Numerical (Continuous)
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #e65100"></div>
+            Numerical (Discrete / Temporal)
+          </div>
         </div>
       </div>
-  
     </div>
-  </div>
     <!-- =====================================================================
          VISUALIZATION 1: Global Sales by Genre and Platform (Bubble Matrix)
          ===================================================================== -->
     <section id="vis1-section">
       <div class="vis1-wrapper reveal">
-
-        <div class="vis-label-box">vis 1 — Global Sales by Genre &amp; Platform</div>
+        <div class="vis-label-box">
+          vis 1 — Global Sales by Genre &amp; Platform
+        </div>
         <h2 class="vis-section-title">Global Sales by Genre and Platform</h2>
-        <p class="vis-instructions">Click and drag right to explore more platforms.</p>
+        <p class="vis-instructions">
+          Click and drag right to explore more platforms.
+        </p>
 
         <div class="vis1-body">
           <div class="vis1-area">
@@ -213,20 +346,25 @@
               <div id="vis1"></div>
             </div>
           </div>
-
-          <div class="vis1-summary-box">
-            <h4>Total Global Sales</h4>
-            <div class="vis1-sales-number" id="totalSales">—</div>
-            <div class="vis1-legend-hint">Circle size &amp; colour reflect total global sales (millions)</div>
-          </div>
         </div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The visualization highlights clear dominance patterns across platforms and genres. Certain platforms generate significantly higher global sales, particularly when paired with popular genres like Action and Sports. The darker and larger circles indicate strong market concentration, showing that a limited number of platform–genre combinations account for a substantial share of total sales. Strategy titles vary depending on platform strength, reinforcing how platform popularity strongly influences genre performance.</p>
+      <p>
+        The visualization highlights patterns across platforms and genres.
+        Certain platforms generate higher global sales, particularly when paired
+        with genres like Action and Sports. The darker and larger circles
+        indicate market concentration, showing that a number of platform-genre
+        combinations account for a substantial share of total sales. Strategy
+        titles popularity vary depending on platform popularity, reinforcing how
+        platforms influence genre performance. I selected a bubble matrix to
+        reveal how consoles like the Wii are defined by specific genres like
+        Sports. This design effectively highlights outliers through the dual
+        encoding of size and color for global sales, providing a density map
+        that is more scannable than traditional charts.
+      </p>
     </div>
 
     <!-- =====================================================================
@@ -234,35 +372,58 @@
          ===================================================================== -->
     <section id="vis2-section">
       <div class="vis2-wrapper reveal">
-
-        <div class="vis-label-box">vis 1A — Console Genre Personalities</div>
-        <h2 class="vis-section-title">Console "Genre Personalities"</h2>
+        <div class="vis-label-box">
+          vis 1A — Console Success with Specific Genres (measured by total
+          sales)
+        </div>
+        <h2 class="vis-section-title">
+          Console Success with Specific Genres (measured by total sales)
+        </h2>
         <div class="vis-section-questions">
           <strong>Questions Answered</strong>
-          Does a specific platform's global success depend on a single dominant genre (such as Shooters for the X360) or a balanced library of diverse categories? How does the genre distribution of the DS and SNES compare to competitors like the PS2 and X360?
+          Does a specific platform's global success depend on a single dominant
+          genre (such as Shooters for the X360) or different categories? How
+          does the genre distribution of the DS and SNES compare to competitors
+          like the PS2 and X360?
         </div>
-
         <div id="vis2"></div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The donut charts reveal that each console has a distinct "genre personality." The X360 is dominated by Shooters and Action titles reflecting its Western-skewing install base, while the SNES shows a more balanced distribution rooted in Platform and RPG heritage. The DS stands out with a uniquely diverse library driven by Nintendo's broad software strategy. Comparing these four consoles side-by-side makes it easy to see which platforms were defined by a single genre and which cultivated diverse audiences.</p>
+      <p>
+        The donut charts quantify the proportional distribution of global
+        software sales by genre across four hardware platforms. This
+        visualization indicates that the Xbox 360 library is characterized by
+        market concentration in the Shooter and Action genres, whereas the SNES
+        is predominantly based in the Platform category. The Nintendo DS is less
+        concentrated within genres, with revenue distributed across
+        Role-Playing, Platform, and miscellaneous titles. This layout
+        distinguishes platforms that depend on genre specialization from those
+        with multi-categorical genre specialization. I selected donut charts to
+        analyze the proportional variance of genre reliance across platforms,
+        allowing for a comparative audit of market concentration independent of
+        absolute sales volume. Design choices, such as the standardized inner
+        radius and bottom-aligned legend, optimize horizontal space to ensure
+        comparisons remain legible within the dashboard.
+      </p>
     </div>
 
-    <hr class="reveal">
+    <hr class="reveal" />
 
     <!-- =====================================================================
          VISUALIZATION 3: Regional Sales by Genre & Year — Area Chart
          ===================================================================== -->
     <section id="vis3-section">
       <div class="vis3-wrapper reveal">
-
         <div class="vis-label-box">vis 2 — Regional Sales vs. Platform</div>
         <h2 class="vis-section-title">Regional Sales by Genre Over Time</h2>
-        <p class="vis-instructions">Click a colour to highlight a platform. Drag left/right for years, up/down for genres.</p>
+        <p class="vis-instructions">
+          Click a colour to highlight a platform. Drag left/right for years,
+          up/down for genres. Note that publishers are differentiated via
+          colour.
+        </p>
 
         <div class="vis3-scale-title">Global Sales (M)</div>
         <div class="vis3-x-label">Year</div>
@@ -271,13 +432,29 @@
         <div class="vis3-scroll">
           <div id="vis3"></div>
         </div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The area chart reveals a clear expansion and contraction arc across game genres over time. The mid-2000s Wii and DS boom is visible as a spike in Action and Sports titles, while the 2010s show consolidation — fewer platforms, higher per-title sales. Clicking a platform colour highlights its trajectory and makes year-over-year comparison intuitive, while the drag-to-scroll interaction allows viewers to explore earlier decades that would otherwise be compressed.</p>
+      <p>
+        An area chart was chosen to visualize the growth of the global market
+        from 1980 to 2017, disaggregated by platform, while observing the
+        market-entry timelines of individual hardware platforms. The video game
+        industry has evolved from a period of diversity, peaking during the
+        mid-2000s Wii and DS era, into a consolidated market where sales volume
+        is concentrated within a limited number of platforms like PlayStation 4
+        and Xbox One. This longitudinal transition corresponds with a shift in
+        consumer purchases of Action and Sports franchises, while previously
+        prominent categories like Puzzles experienced a decline in unit volume.
+        Additonally, the market has transitioned into a hit-driven economy where
+        major publishers leverage Microsoft’s dominance in North America and
+        Electronic Arts’ European stronghold to launch releases that subsidize
+        niche games. In terms of design, the stacked encoding effectively
+        communicates industry volume peaks, such as the 2007–2010 surge, while
+        the color-coding reveals the dominance of manufacturers across hardware
+        generations.
+      </p>
     </div>
 
     <!-- =====================================================================
@@ -285,36 +462,58 @@
          ===================================================================== -->
     <section id="vis4-section">
       <div class="vis4-wrapper reveal">
-
         <div class="vis-label-box">vis 2A — Regional Market Composition</div>
-        <h2 class="vis-section-title">Regional Market Composition: PS4, XOne, PC &amp; WiiU</h2>
+        <h2 class="vis-section-title">
+          Regional Market Composition: PS4, XOne, PC &amp; WiiU
+        </h2>
         <div class="vis-section-questions">
           <strong>Questions Answered</strong>
-          Which regions have the most balanced distribution of platform sales? How do total sales for the PS4 compare to its direct competitors (XOne, PC, and WiiU) within each specific region?
+          Which regions have the most balanced distribution of platform sales?
+          How do total sales for the PS4 compare to its direct competitors
+          (XOne, PC, and WiiU) within each specific region?
         </div>
-        <p class="vis-instructions">This bar chart compares total sales across NA, EU, and JP markets for the four platforms.</p>
+        <p class="vis-instructions">
+          This bar chart compares total sales across NA, EU, and JP markets for
+          the four platforms.
+        </p>
 
         <div id="vis4"></div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The grouped bar chart makes the regional dominance of each modern platform immediately readable. The PS4's lead in NA and EU is clear, while the WiiU's relative strength in Japan compared to the XOne illustrates Nintendo's enduring home-market appeal. The PC shows a notably even spread across regions, reinforcing its platform-agnostic, globally distributed user base. Grouping by region rather than platform makes cross-regional comparisons effortless.</p>
+      <p>
+        This chart compares regional sales totals for the PC, PS4, WiiU, and
+        XOne across European, North American, Japanese, and “other sales”
+        territories. I chose this visualization as I was curious to see if
+        specific platforms achieved uniform success or relied on territorial
+        market share. Results demonstrate the PS4’s popularity across different
+        regions, and the PC’s reliance on the European market relative to its
+        North American performance. I implemented a stacked bar chart to analyze
+        the absolute and relative success of contemporary hardware platforms in
+        relation to specific regions. To enhance clarity, I utilized categorical
+        colors to represent each manufacturer, allowing for an immediate visual
+        understanding of which platform corresponded with which colour. Grouping
+        by market territory facilitates an immediate understanding of platform
+        performance within local context, and horizontal stacking communicates
+        total market scale.
+      </p>
     </div>
 
-    <hr class="reveal">
+    <hr class="reveal" />
 
     <!-- =====================================================================
          VISUALIZATION 5: Regional Sales by Platform — Multi-row Line Chart
          ===================================================================== -->
     <section id="vis5-section">
       <div class="vis5-wrapper reveal">
-
         <div class="vis-label-box">vis 3 — Regional Sales vs. Platform</div>
         <h2 class="vis-section-title">Regional Sales by Platform</h2>
-        <p class="vis-instructions">Click a line to highlight it. Drag to explore different platforms and regions.</p>
+        <p class="vis-instructions">
+          Click a line to highlight it. Drag to explore different platforms and
+          regions.
+        </p>
 
         <div class="vis5-x-label">Platform</div>
         <div class="vis5-y-label">Sales Type</div>
@@ -322,13 +521,24 @@
         <div class="vis5-scroll">
           <div id="vis5"></div>
         </div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The visualization reveals distinct regional preferences across gaming platforms. North American sales dominate for most platforms, particularly for Xbox and PlayStation consoles, reflecting strong brand loyalty and market penetration in the region. Japanese sales show pronounced preference for Nintendo platforms and handheld devices, demonstrating the cultural affinity for portable gaming and local brands. European sales patterns closely mirror North American trends but at lower absolute volumes, suggesting similar gaming preferences across Western markets.</p>
+      <p>
+        This visualization maps sales totals of specific platforms to identify
+        performance correlations. Data reflects regional patterns, as North
+        American consumers buy Xbox and PlayStation consoles, whereas Japanese
+        markets exhibit a preference for Nintendo platforms and portable
+        hardware. Consequently, Microsoft platforms show a regional dependency
+        on North America, while Sony and Nintendo achieve an international
+        scope. I utilized layered line graphs to investigate these correlations,
+        facilitating an audit of which hardware transcended regional cultural
+        barriers. This design highlights the parallel trajectories between
+        secondary markets, displaying that platforms popular in Europe are
+        typically popular in other regions.
+      </p>
     </div>
 
     <!-- =====================================================================
@@ -336,19 +546,36 @@
          ===================================================================== -->
     <section id="vis6-section">
       <div class="vis6-wrapper reveal">
-
         <div class="vis-label-box">vis 3A — Proportional Market Dependency</div>
         <h2 class="vis-section-title">Proportional Market Dependency</h2>
-        <p class="vis-instructions">Darker purple indicates heavy regional dependency. Hover a cell for exact percentages.</p>
+        <div class="vis-section-questions">
+          <strong>Questions Answered</strong>
+          Which manufacturers have successfully diversified their revenue
+          streams to achieve international balance?
+        </div>
+        <p class="vis-instructions">
+          Darker purple indicates more regional dependency. Hover a cell for
+          exact percentages.
+        </p>
 
-      <div id="vis6"></div>
-
+        <div id="vis6"></div>
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The heatmap exposes which platforms lived or died by a single region. The X360 and XOne both show heavy NA dependency — without the American market they would be marginal products. Meanwhile, the 3DS and DS show a notably high JP proportion compared to competitors, confirming Nintendo handhelds as Japanese cultural staples. The PS2 and PS3 display the most even distribution, reflecting Sony's success in building a genuinely global brand.</p>
+      <p>
+        This heatmap measures revenue as a percentage to evaluate geographic
+        dependency independent of absolute sales volume. High colour intensity
+        in the NA column for the X360 and XOne confirms a high reliance on North
+        American demand. I implemented a heatmap to analyze market
+        concentration, as I was curious to identify which platforms required
+        regional dominance for viability versus those with diversified global
+        revenue. This design effectively isolates specialization from total
+        volume, while the gradient intensity scale facilitates the
+        identification of platforms with regional exposure versus those with
+        diversified international revenue
+      </p>
     </div>
 
     <!-- =====================================================================
@@ -356,36 +583,57 @@
          ===================================================================== -->
     <section id="vis7-section">
       <div class="vis7-wrapper reveal">
-
         <div class="vis-label-box">vis 3B — East-West Symmetry Plot</div>
         <h2 class="vis-section-title">The East-West "Symmetry" Plot</h2>
         <div class="vis-section-questions">
           <strong>Question Answered</strong>
-          Which platforms effectively "migrated" their success between the most culturally divergent markets (NA vs. Japan), and which were "walled off" from the East entirely?
+          Which platforms effectively migrated their success between culturally
+          divergent markets, specifically, NA vs. Japan, and which were unable
+          to become popular in the East?
         </div>
-        <p class="vis-instructions">Platforms near the diagonal achieved equal success in both NA and Japan. Bottom-edge platforms failed to migrate East.</p>
+        <p class="vis-instructions">
+          Platforms near the diagonal achieved equal success in both NA and
+          Japan. Bottom-edge platforms failed to migrate East.
+        </p>
 
         <div id="vis7"></div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The symmetry scatter reveals a stark divide: Nintendo platforms cluster near the diagonal, confirming balanced NA and JP appeal, while Microsoft's Xbox ecosystem sits far off-axis with massive NA totals and negligible JP sales. The PS2 and PS3 occupy a middle ground — strong in NA but with meaningful JP presence — showing that Sony's cross-Pacific strategy was the most effective of the three publishers. Platforms that fall along the diagonal are true "cultural bridges."</p>
+      <p>
+        This scatter plot was created due to my curiosity about how North
+        American and Japanese sales volumes of sales at the platform level can
+        be used to measure geographic parity. Nintendo handhelds cluster near
+        the diagonal line of parity, while the Xbox ecosystem is isolated along
+        the horizontal axis, indicating a failure to achieve Japanese market
+        sales. I utilized a scatter plot to measure the degree of geographic
+        symmetry in platform success, focusing on the divide between Western and
+        Japanese markets. This layout uses the diagonal parity line as a
+        technical benchmark to distinguish platforms with balanced global appeal
+        from those confined to a single hemisphere. To facilitate the immediate
+        identification of consoles within dense data clusters, I implemented
+        categorical colours paired with geometric marks, such as triangles for
+        the DS and squares for the PS2, ensuring each hardware remains legible
+      </p>
     </div>
 
-    <hr class="reveal">
+    <hr class="reveal" />
 
     <!-- =====================================================================
          VISUALIZATION 8: Geographic Appeal — NA vs JP Scatterplot
          ===================================================================== -->
     <section id="vis8-section">
       <div class="vis8-wrapper reveal">
-
         <div class="vis-label-box">vis 4 — Geographic Appeal</div>
-        <h2 class="vis-section-title">Geographic Appeal &amp; Market Balance of Individual Titles</h2>
-        <p class="vis-instructions">Click a dot to highlight it. Circle size represents Global Sales. Drag to explore the full range.</p>
+        <h2 class="vis-section-title">
+          Geographic Appeal &amp; Market Balance of Individual Titles
+        </h2>
+        <p class="vis-instructions">
+          Click a dot to highlight it. Circle size represents Global Sales. Drag
+          to explore the full range.
+        </p>
 
         <div class="vis8-x-label">NA Sales (Millions)</div>
         <div class="vis8-y-label">JP Sales (Millions)</div>
@@ -393,13 +641,26 @@
         <div class="vis8-scroll">
           <div id="vis8"></div>
         </div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>I chose a scatterplot because it is the most effective way to simultaneously reveal three variables — NA Sales, JP Sales, and Global Sales — for hundreds of individual game titles at once. The x/y axes directly expose the relationship between two regional markets, making it immediately clear whether a title resonated in one region but not the other (dots hugging the axes) versus titles with balanced cross-regional appeal (dots spread diagonally). Encoding Global Sales as circle size adds a third dimension without cluttering the view, letting the eye naturally group blockbusters from niche titles.</p>
+      <p>
+        This plot disaggregates the dataset to the title level to map NA vs. JP
+        performance, with mark size representing Global Sales as I was curious
+        as to how different titles performed in different markets. The high
+        statistical density of records concentrated within the 0 to 2 million
+        unit range empirically demonstrates the right-skewed distribution of the
+        industry, where the vast majority of games generate marginal revenue
+        compared to high-volume outliers, like Pokémon Red/Blue, which exhibit
+        high symmetry, whereas titles like Duck Hunt show a skew toward the
+        North American axis. This title-level scatter plot was chosen to
+        visualize the geographic distribution of individual software hits, using
+        the x/y axes to expose performance discrepancies. Encoding global sales
+        to mark area and colour adds a third dimension that allows for the
+        simultaneous analysis of volume and geographic concentration.
+      </p>
     </div>
 
     <!-- =====================================================================
@@ -407,23 +668,41 @@
          ===================================================================== -->
     <section id="vis9-section">
       <div class="vis9-wrapper reveal">
-
         <div class="vis-label-box">vis 4A — Regional Divergence</div>
-        <h2 class="vis-section-title">The Story of Regional Divergence</h2>
+        <h2 class="vis-section-title">
+          Regional Sales in Relation to Top Preforming Game Titles
+        </h2>
         <div class="vis-section-questions">
           <strong>Questions Answered</strong>
-          Which top-selling titles show a balanced "intensity" across major markets? Which global blockbusters achieved their rank almost entirely through North American dominance while showing minimal appeal in Japan?
+          Which top-selling titles are popular across major markets? Which
+          global blockbusters achieved their rank almost entirely through North
+          American dominance while showing minimal appeal in Japan?
         </div>
-        <p class="vis-instructions">Compare NA, JP, and Global columns to see whether each title's demand is truly global or regionally concentrated.</p>
+        <p class="vis-instructions">
+          Compare NA, JP, and Global columns to see whether each title's demand
+          is truly global or regionally concentrated through colour and the
+          tooltip provided.
+        </p>
 
         <div id="vis9"></div>
-
       </div>
     </section>
 
     <div class="reflection reveal">
       <h3>Reflection</h3>
-      <p>The heatmap makes the "regional divergence story" legible at a glance for the industry's very top titles. Games like Wii Sports and Duck Hunt light up the NA column dramatically while remaining dark in JP, confirming their status as Western cultural phenomena rather than universal hits. Pokemon Red/Blue is the standout exception — it is the only entry in the top tier to show strong colour intensity across all three columns, making it a genuine global blockbuster that transcended the East-West divide.</p>
+      <p>
+        I chose this title-level heatmap because I was curious to see if the
+        industry's highest-selling games achieved their status through global or
+        regional appeal. This matrix provides a title-by-title comparison of NA,
+        JP, and Global sales for the industry's highest-performing games. The
+        contrast between the NA and JP columns confirms that global rankings are
+        frequently achieved through North American market dominance rather than
+        international sales. I selected a title-based heatmap to allow for a
+        side-by-side comparison of regional unit contributions to total global
+        rank. The high-contrast colour scheme differentiates titles with
+        international intensity from those that remain "dark" in specific market
+        columns.
+      </p>
     </div>
 
     <!-- External JS -->
@@ -438,16 +717,23 @@
           <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
             <img src="images/gmailLogo.png" alt="Email" />
           </a>
-          <a href="https://www.linkedin.com/in/laraine-sim" target="_blank" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/laraine-sim"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
             <img src="images/LinkedIn_icon.png" alt="LinkedIn" />
           </a>
-          <a href="https://github.com/las21-sfu" target="_blank" aria-label="GitHub">
+          <a
+            href="https://github.com/las21-sfu"
+            target="_blank"
+            aria-label="GitHub"
+          >
             <img src="images/githubLogo.png" alt="GitHub" />
           </a>
         </div>
         <p class="footer-copy">© 2026 Laraine Sim. All rights reserved.</p>
       </div>
     </footer>
-
   </body>
 </html>
