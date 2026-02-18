@@ -55,7 +55,6 @@
   box-sizing: border-box;
 }
 
-/* vega-tooltip uses a <table> internally — exempt it from the reset or cells collapse to 0px */
 .vg-tooltip,
 .vg-tooltip * {
   margin: revert;
@@ -270,7 +269,6 @@ tbody tr:hover {
   background: #f7fbf7;
 }
 
-/* Stagger each row */
 tbody tr:nth-child(1) {
   animation-delay: 0.05s;
 }
@@ -317,7 +315,6 @@ td {
   line-height: 1.5;
 }
 
-/* Variable name — monospace pill */
 .var-name {
   font-family: "DM Mono", monospace;
   font-weight: 500;
@@ -336,7 +333,6 @@ td.desc {
   font-weight: 400;
 }
 
-/* Data type chip */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -442,7 +438,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      INSIGHT CARDS (dark hero band)
+      INSIGHT CARDS 
       ========================================================================== */
 .analysis-section {
   padding: 48px 16px 40px;
@@ -453,7 +449,6 @@ td.desc {
   background: var(--green-ink);
 }
 
-/* Summary Statistics Box */
 .stats-summary {
   width: 95%;
   max-width: 860px;
@@ -632,7 +627,6 @@ td.desc {
   transform: scale(1.6);
 }
 
-/* Smooth expand — JS toggles .open class */
 .summary-text {
   overflow: hidden;
   max-height: 0;
@@ -706,7 +700,6 @@ td.desc {
   margin-bottom: 4px;
 }
 
-/* Instruction hint text */
 .vis-instructions {
   font-size: 0.8rem;
   color: var(--ink-soft);
@@ -745,7 +738,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      SHARED: ALL VIS WRAPPERS (white card with top accent)
+      SHARED: ALL VIS WRAPPERS
       ========================================================================== */
 .vis1-wrapper,
 .vis2-wrapper,
@@ -770,7 +763,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      SHARED: STICKY AXIS LABELS
+      SHARED: AXIS LABELS
       ========================================================================== */
 .vis1-x-label,
 .vis1-y-label,
@@ -834,7 +827,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 1: Bubble Matrix
+      VISUALIZATION 1
       ========================================================================== */
 .vis1-body {
   display: flex;
@@ -911,7 +904,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 2: Donut Charts
+      VISUALIZATION 2
       ========================================================================== */
 #vis2 {
   margin-top: 24px;
@@ -921,7 +914,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 3: Area Chart
+      VISUALIZATION 3
       ========================================================================== */
 .vis3-scroll {
   margin-top: 24px;
@@ -953,7 +946,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 4: Grouped Bar
+      VISUALIZATION 4
       ========================================================================== */
 #vis4 {
   margin-top: 20px;
@@ -962,7 +955,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 5: Multi-row Line Chart
+      VISUALIZATION 5
       ========================================================================== */
 .vis5-scroll {
   margin-top: 44px;
@@ -987,7 +980,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 6: Dependency Heatmap
+      VISUALIZATION 6
       ========================================================================== */
 #vis6 {
   margin-top: 24px;
@@ -997,7 +990,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 7: East-West Scatter
+      VISUALIZATION 7
       ========================================================================== */
 #vis7 {
   margin-top: 24px;
@@ -1007,7 +1000,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 8: NA vs JP Scatterplot
+      VISUALIZATION 8
       ========================================================================== */
 .vis8-scroll {
   margin-top: 44px;
@@ -1032,7 +1025,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      VISUALIZATION 9: Divergence Heatmap
+      VISUALIZATION 9
       ========================================================================== */
 #vis9 {
   margin-top: 20px;
@@ -1041,7 +1034,7 @@ td.desc {
 }
 
 /* ==========================================================================
-   VEGA-TOOLTIP — float above sticky header and all overflow containers
+   VEGA-TOOLTIP
    ========================================================================== */
 .vg-tooltip {
   z-index: 9999 !important;
@@ -1102,7 +1095,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      RESPONSIVE — 1200px
+      RESPONSIVENESS
       ========================================================================== */
 @media screen and (max-width: 1200px) {
   .vis1-body {
@@ -1124,7 +1117,7 @@ td.desc {
 }
 
 /* ==========================================================================
-      RESPONSIVE — 768px
+      RESPONSIVENESS — 768px
       ========================================================================== */
 @media screen and (max-width: 768px) {
   .header {

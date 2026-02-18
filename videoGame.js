@@ -4,7 +4,7 @@
 
 /**
  * IntersectionObserver — adds .visible to .reveal and hr elements
- * when they scroll into view, triggering CSS transitions.
+ * when they scroll into view, triggering CSS.
  */
 const revealObserver = new IntersectionObserver(
   (entries) => {
@@ -24,12 +24,11 @@ document.querySelectorAll(".reveal, hr").forEach((el) => {
 
 /* ==========================================================================
    INSIGHT CARD TOGGLE
-   Uses CSS max-height animation via .open class instead of display:none
    ========================================================================== */
 
 /**
- * Toggle an insight card's body open/closed.
- * @param {number} id - The insight number (1, 2, or 3)
+ * Toggle an insight card.
+ * @param {number} id
  */
 function toggleInsight(id) {
   const text = document.getElementById(`insight-${id}`);
@@ -42,9 +41,9 @@ function toggleInsight(id) {
 
 /**
  * Attach drag-to-scroll behaviour to a scroll container.
- * @param {string} selector  - CSS selector for the scroll container
+ * @param {string} selector
  * @param {Object} [options]
- * @param {boolean} [options.vertical=false] - Also enable vertical drag-scroll
+ * @param {boolean} [options.vertical=false]
  */
 function attachDragScroll(selector, options = {}) {
   const el = document.querySelector(selector);
@@ -81,13 +80,10 @@ function attachDragScroll(selector, options = {}) {
   });
 }
 
-/* Responsive breakpoint */
 const isMobile = window.innerWidth < 640;
 
 /* ==========================================================================
-   VISUALIZATION 1: Global Sales by Genre and Platform (Bubble Matrix)
-   Screen position : 1st
-   HTML target     : #vis1
+   VISUALIZATION 1: Global Sales by Genre and Platform 
    ========================================================================== */
 const spec1 = {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
@@ -148,7 +144,6 @@ vegaEmbed("#vis1", spec1, {
   attachDragScroll(".vis1-scroll");
 
   d3.csv("data/videogames_wide.csv").then((data) => {
-    // Filter out rows where Global_Sales is not a valid number (handles malformed CSV rows)
     const validData = data.filter(
       (d) => d.Global_Sales && !isNaN(+d.Global_Sales)
     );
@@ -159,9 +154,7 @@ vegaEmbed("#vis1", spec1, {
 });
 
 /* ==========================================================================
-   VISUALIZATION 2: Console "Genre Personalities" (Radial Donuts)
-   Screen position : 2nd
-   HTML target     : #vis2
+   VISUALIZATION 2: Console Success with Specific Genres (measured by total sales)
    ========================================================================== */
 
 const spec2 = {
@@ -235,9 +228,7 @@ vegaEmbed("#vis2", spec2, {
 });
 
 /* ==========================================================================
-   VISUALIZATION 3: Regional Sales by Genre & Year — Area Chart
-   Screen position : 3rd
-   HTML target     : #vis3
+   VISUALIZATION 3: Regional Sales by Genre Over Time
    ========================================================================== */
 const spec3 = {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
@@ -326,10 +317,7 @@ vegaEmbed("#vis3", spec3, {
   attachDragScroll(".vis3-scroll", { vertical: true });
 });
 /* ==========================================================================
-   VISUALIZATION 4: Regional Market Composition — Grouped Bar
-   (PS4 vs XOne vs PC vs WiiU)
-   Screen position : 4th
-   HTML target     : #vis4
+   VISUALIZATION 4: Regional Market Composition 
    ========================================================================== */
 
 const spec4 = {
@@ -388,9 +376,7 @@ vegaEmbed("#vis4", spec4, {
 });
 
 /* ==========================================================================
-   VISUALIZATION 5: Regional Sales by Platform — Multi-row Line Chart
-   Screen position : 5th
-   HTML target     : #vis5
+   VISUALIZATION 5: Regional Sales by Platform
    ========================================================================== */
 
 const spec5 = {
@@ -510,9 +496,7 @@ vegaEmbed("#vis5", spec5, {
 });
 
 /* ==========================================================================
-   VISUALIZATION 6: Proportional Market Dependency — Heatmap
-   Screen position : 6th
-   HTML target     : #vis6
+   VISUALIZATION 6: Proportional Market Dependency 
    ========================================================================== */
 
 const spec6 = {
@@ -540,7 +524,6 @@ const spec6 = {
       as: "PercentOfGlobal",
     },
 
-    /* 👇 ADD THIS HERE */
     {
       aggregate: [{ op: "sum", field: "PercentOfGlobal", as: "SumPercent" }],
       groupby: ["Platform", "Region"],
@@ -587,8 +570,6 @@ vegaEmbed("#vis6", spec6, {
 
 /* ==========================================================================
    VISUALIZATION 7: East-West "Symmetry" Plot
-   Screen position : 7th
-   HTML target     : #vis7
    ========================================================================== */
 
 const spec7 = {
@@ -641,9 +622,7 @@ vegaEmbed("#vis7", spec7, {
 });
 
 /* ==========================================================================
-   VISUALIZATION 8: Geographic Appeal — NA vs JP Scatterplot
-   Screen position : 8th
-   HTML target     : #vis8
+   VISUALIZATION 8: Geographic Appeal
    ========================================================================== */
 
 const spec8 = {
@@ -744,8 +723,6 @@ vegaEmbed("#vis8", spec8, {
 
 /* ==========================================================================
    VISUALIZATION 9: Regional Divergence Heatmap
-   Screen position : 9th
-   HTML target     : #vis9
    ========================================================================== */
 
 const spec9 = {
