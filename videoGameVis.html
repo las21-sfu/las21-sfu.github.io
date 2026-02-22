@@ -29,6 +29,7 @@
     <!-- =====================================================================
          INSIGHT CARDS
          ===================================================================== -->
+    <h1 class="visually-hidden">Video Game Visualizations — Laraine Sim</h1>
     <section class="analysis-section">
       <!-- Summary Statistics -->
       <div class="stats-summary">
@@ -36,7 +37,7 @@
 
         <div class="stats-grid">
           <div class="stat-group">
-            <h4>Central Tendency (Global Sales)</h4>
+            <h3>Central Tendency (Global Sales)</h3>
             <ul>
               <li>
                 <span class="stat-label">Mean:</span>
@@ -59,7 +60,7 @@
           </div>
 
           <div class="stat-group">
-            <h4>Spread and Variability</h4>
+            <h3>Spread and Variability</h3>
             <ul>
               <li>
                 <span class="stat-label">Min:</span>
@@ -86,9 +87,9 @@
           </div>
 
           <div class="stat-group">
-            <h4>Categorical Distributions</h4>
+            <h3>Categorical Distributions</h3>
             <div class="stat-subgroup">
-              <h5>Genres</h5>
+              <h4>Genres</h4>
               <p>
                 <span class="stat-label">Most frequent:</span>
                 <strong>Action</strong>
@@ -100,7 +101,7 @@
               </p>
             </div>
             <div class="stat-subgroup">
-              <h5>Platforms</h5>
+              <h4>Platforms</h4>
               <p>
                 <span class="stat-label">Most common:</span>
                 <strong>Nintendo DS</strong>
@@ -110,7 +111,7 @@
               </p>
             </div>
             <div class="stat-subgroup">
-              <h5>Publishers</h5>
+              <h4>Publishers</h4>
               <p>
                 <span class="stat-label">Most frequent:</span>
                 <strong>Electronic Arts</strong>
@@ -215,8 +216,17 @@
         </div>
 
         <!-- Table -->
+        <p id="table-desc" class="visually-hidden">
+          This table lists each variable in the Video Game Sales dataset,
+          provides a plain-language description of what it records, and
+          classifies it as either a categorical (nominal or ordinal) or
+          numerical (continuous or discrete) data type.
+        </p>
         <div class="table-wrap">
-          <table>
+          <table
+            aria-label="Variables and Data Types"
+            aria-describedby="table-desc"
+          >
             <caption>
               Description of variables and data types in the Video Game Sales
               dataset, including categorical and numerical classifications.
@@ -719,7 +729,10 @@
     <footer class="footer" id="contact">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
+          <a
+            href="/cdn-cgi/l/email-protection#82eee3f0e3ebece7e3ececf1ebefc2e5efe3ebeeace1edef"
+            aria-label="Email"
+          >
             <img src="images/gmailLogo.png" alt="" />
           </a>
           <a
