@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-tooltip@0.30.0/build/vega-tooltip.min.js"></script>
   </head>
@@ -21,8 +20,10 @@
       <div class="logo">
         <a href="index.html">LS</a>
       </div>
-      <nav><a href="visualizations.html">Visualizations</a></nav>
-      <nav><a href="videoGameVis.html">Video Game Visualizations</a></nav>
+      <nav aria-label="Main navigation">
+        <a href="visualizations.html">Visualizations</a>
+        <a href="videoGameVis.html">Video Game Visualizations</a>
+      </nav>
     </header>
 
     <!-- =====================================================================
@@ -216,6 +217,10 @@
         <!-- Table -->
         <div class="table-wrap">
           <table>
+            <caption>
+              Description of variables and data types in the Video Game Sales
+              dataset, including categorical and numerical classifications.
+            </caption>
             <thead>
               <tr>
                 <th>Variable</th>
@@ -715,21 +720,21 @@
       <div class="footer-content">
         <div class="footer-links">
           <a href="mailto:laraineannsim@gmail.com" aria-label="Email">
-            <img src="images/gmailLogo.png" alt="Email" />
+            <img src="images/gmailLogo.png" alt="" />
           </a>
           <a
             href="https://www.linkedin.com/in/laraine-sim"
             target="_blank"
             aria-label="LinkedIn"
           >
-            <img src="images/LinkedIn_icon.png" alt="LinkedIn" />
+            <img src="images/LinkedIn_icon.png" alt="" />
           </a>
           <a
             href="https://github.com/las21-sfu"
             target="_blank"
             aria-label="GitHub"
           >
-            <img src="images/githubLogo.png" alt="GitHub" />
+            <img src="images/githubLogo.png" alt="" />
           </a>
         </div>
         <p class="footer-copy">© 2026 Laraine Sim. All rights reserved.</p>
