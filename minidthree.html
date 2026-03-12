@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>D3 Gapminder Visualization</title>
+    <link rel="stylesheet" href="minid3.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Gapminder Data Visualization</h1>
+      <p>
+        Explore the relationship between GDP per Capita and Life Expectancy
+        across different countries over time.
+      </p>
+    </header>
+    <main>
+      <div class="container">
+        <div id="controls">
+          <div class="control-row">
+            <label for="yearSlider">Year:</label>
+            <input
+              type="range"
+              id="yearSlider"
+              min="0"
+              max="0"
+              step="5"
+              value="0"
+            />
+            <span id="yearDisplay">Year</span>
+          </div>
+          <div class="control-row">
+            <label for="scaleSelect">X-Axis Scale:</label>
+            <select id="scaleSelect">
+              <option value="linear">Linear</option>
+              <option value="log" selected>Logarithmic</option>
+            </select>
+          </div>
+          <div class="control-row buttons">
+            <button id="play">Play</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+          </div>
+        </div>
+        <div id="visContainer"></div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Data Source:
+        <a href="https://www.gapminder.org/data/" target="_blank">Gapminder</a>
+      </p>
+    </footer>
+    <script type="module" src="minid3.js"></script>
+  </body>
+</html>
